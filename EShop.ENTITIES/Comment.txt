@@ -1,0 +1,2 @@
+﻿-Domain Entitiler Ayarlandı 
+-Identity EF. Kütüphanesi eklendi AppUser Classi için 
