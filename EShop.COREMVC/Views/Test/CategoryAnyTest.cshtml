@@ -1,0 +1,20 @@
+﻿@model CategoryAddPageVM
+
+<h1>@TempData["message"]</h1>
+<form asp-controller="Test" asp-action="CategoryAnyTest" method="post" class="p-3 w-75 m-auto">
+
+    <div class="mb-3">
+        <label>Category ismi giriniz</label>
+        <input asp-for="Category.CategoryName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Category ismi giriniz</label>
+        <input asp-for="Category.Description" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-primary">Test Et</button>
+    </div>
+
+</form>

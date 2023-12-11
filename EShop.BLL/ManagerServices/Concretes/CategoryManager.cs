@@ -23,6 +23,16 @@ namespace EShop.BLL.ManagerServices.Concretes
             _mapper = mapper;
             _catRep = catRep;
         }
+
+        public string Sil(string name) //Açık olurmus bak
+        {
+            var category=_catRep.FirstOrDefault(x=>x.CategoryName == name);
+            //_iRep.Delete(category); Delete Test Edildi
+
+            return "Silindi";
+        }
         //Burada IRepository<IEntity> kullanmamız lazım önemli !!
+
+
     }
 }

@@ -10,6 +10,6 @@ namespace EShop.BLL.ManagerServices.Abstracts
 {
     public interface ICategoryManager:IManager<CategoryDTO,Category>
     {
-
+        public string Sil(string name);
     }
 }

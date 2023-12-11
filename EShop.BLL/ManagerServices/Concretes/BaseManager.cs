@@ -55,13 +55,13 @@ namespace EShop.BLL.ManagerServices.Concretes
             List<U> entityList = _mapper.Map<List<U>>(list);
             await _iRep.AddRangeAsync(entityList);
         }
-
+        //Test Edildi
         public bool Any(Expression<Func<T, bool>> exp) 
         {
             Expression<Func<U, bool>> newExp = ExpressionVisitorHelper.ReplaceVisitor<T, U>(exp);
             return _iRep.Any(newExp);
         }
-
+        //Test Edildi
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> exp)
         {
 
@@ -71,8 +71,9 @@ namespace EShop.BLL.ManagerServices.Concretes
 
         public void Delete(T item)
         {
-           
+
            var entity = _mapper.Map<U>(item);
+            
             if (entity.CreatedDate == default)
             {
                 return;
@@ -122,7 +123,7 @@ namespace EShop.BLL.ManagerServices.Concretes
             U foundEntity = _iRep.FirstOrDefault(newExp);
             return _mapper.Map<T>(foundEntity);
         }
-
+        //Test Edildi
         public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> exp)
         {
             Expression<Func<U, bool>> newExp = ExpressionVisitorHelper.ReplaceVisitor<T, U>(exp);
