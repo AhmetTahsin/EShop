@@ -9,5 +9,6 @@ namespace EShop.DAL.Repositories.Abstracts
 {
     public interface IAppUserRepository:IRepository<AppUser>
     {
+       
     }
 }

@@ -13,8 +13,9 @@ namespace EShop.DAL.Repositories.Concretes
     public class AppUserRepository:BaseRepository<AppUser>,IAppUserRepository
     {
         public AppUserRepository(MyContext db,UserManager<AppUser> userManager):base(db)
-        {   
+        {
             
         }
+
     }
 }

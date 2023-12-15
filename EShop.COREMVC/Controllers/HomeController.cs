@@ -37,15 +37,30 @@ namespace EShop.COREMVC.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public IActionResult LogIn(UserLoginPageVM model)
+        public async Task<IActionResult> LogIn(UserLoginPageVM model)
         {
             AppUserDTO userDTO = new AppUserDTO()
             {
                 UserName = model.User.UserName,
                 Password = model.User.Password,
             };
-            
+
+            string result = await _appUserManager.LoginUser(userDTO); //Domain kullanmamak için string olarak dönen deger ile iþlem yapýyorum
+            if (result == "Admin")
+            {
+                return RedirectToAction("Index", "Home", new { Area = "Admin" });
+            }
+            else if (result == "Member")
+            {
+                return RedirectToAction("Index", "Home", new { Area = "Member" });
+            }
+            else if (result == "Seller")
+            {
+                return RedirectToAction("Index", "Seller", new { Area = "Seller" });
+            }
+
 
             return View();
         }

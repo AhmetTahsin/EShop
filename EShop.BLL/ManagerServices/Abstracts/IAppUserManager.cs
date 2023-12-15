@@ -11,6 +11,6 @@ namespace EShop.BLL.ManagerServices.Abstracts
     public interface IAppUserManager:IManager<AppUserDTO,AppUser>
     {
         public bool AddUser(AppUserDTO appUser);
-        public bool LoginUser(AppUserDTO appUser);
+        public Task<string> LoginUser(AppUserDTO appUserDTO);
     }
 }

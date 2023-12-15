@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EShop.BLL.DTOs.DTOClasesses;
+using EShop.BLL.ManagerServices.Abstracts;
 using EShop.DAL.Repositories.Abstracts;
 using EShop.ENTITIES.Models;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EShop.BLL.ManagerServices.Concretes
 {
-    public class ProductImageManager:BaseManager<ProductImageDTO,ProductImage>
+    public class ProductImageManager:BaseManager<ProductImageDTO,ProductImage>,IProductImageManager
     {
         IProductImageRepository _propImgRep;
         IMapper _mapper;

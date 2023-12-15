@@ -19,7 +19,11 @@ namespace EShop.BLL.ServiceInjections
             services.AddScoped(typeof(IManager<,>), typeof(BaseManager<,>));
 
             services.AddScoped<ICategoryManager, CategoryManager>();
-            
+            services.AddScoped<IAppUserManager, AppUserManager>();
+            services.AddScoped<IProductManager, ProductManager>();
+            services.AddScoped<IProductImageManager, ProductImageManager>();
+
+
             services.AddAutoMapper(typeof(ServiceCollectionExtensions));
 
             return services;

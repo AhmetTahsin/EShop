@@ -8,7 +8,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //**************************************
-
+builder.Services.AddIdentityServices();     //Identity Services
 builder.Services.MapperServiceInjections(); //Mapper Services
 builder.Services.AddDbContextService();     //Context Services
 builder.Services.AddRepServices();          //Repositories Services
@@ -28,10 +28,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); //Giriþ için Area !! eriþim
+app.UseAuthentication(); //Login
 
 app.UseAuthorization();
-
 
 
 app.MapControllerRoute(
