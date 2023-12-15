@@ -24,13 +24,20 @@ namespace EShop.DAL.ContextClasses
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new AppUserConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new ProductConfiguration());
+            builder.ApplyConfiguration(new ProductImageConfiguration());
             CategoryDataSeedExtension.SeedCategories(builder); // Fake Veri
             UserRoleDataSeedExtension.SeedUserAdmin(builder);
             UserRoleDataSeedExtension.SeedUserMember(builder);
+            ProductDataSeedExtension.SeedProductImage(builder);
+            ProductDataSeedExtension.SeedProduct(builder);
         }
 
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Product> Products { get; set; }
+
 
     }
 }

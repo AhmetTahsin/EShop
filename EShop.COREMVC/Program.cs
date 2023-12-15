@@ -9,10 +9,10 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 //**************************************
 
-builder.Services.MapperServiceInjections();
-builder.Services.AddDbContextService();
-builder.Services.AddRepServices();
-builder.Services.AddManagerServices(); 
+builder.Services.MapperServiceInjections(); //Mapper Services
+builder.Services.AddDbContextService();     //Context Services
+builder.Services.AddRepServices();          //Repositories Services
+builder.Services.AddManagerServices();      //Manager Services
 
 
 

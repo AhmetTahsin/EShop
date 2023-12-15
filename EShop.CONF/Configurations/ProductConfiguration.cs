@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace EShop.CONF.Configurations
 {
-    public class AppUserConfiguration : BaseConfiguration<AppUser>
+    public class ProductConfiguration : BaseConfiguration<Product>
     {
-        public override void Configure(EntityTypeBuilder<AppUser> builder)
+        public override void Configure(EntityTypeBuilder<Product> builder)
         {
             base.Configure(builder);
-            builder.Ignore(x => x.ID); // Identity'in Kendi id'si var 
         }
     }
 }

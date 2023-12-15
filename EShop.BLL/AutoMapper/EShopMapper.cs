@@ -13,19 +13,24 @@ namespace EShop.BLL.AutoMapper
     {
         public EShopMapper()
         {
-            CreateMap<CategoryDTO, Category>().ReverseMap();
+            CreateMap<CategoryDTO, Category>().ReverseMap();//CategoryDTO => Category ReverMap Tersi işlemide yapmamızı sağlar
 
-            CreateMap<Category, CategoryDTO>()
-                .ForMember(dest => dest.CategoryName, act => act.MapFrom(src => src.CategoryName))
-                .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description))
-                .ForMember(dest => dest.CreatedDate, act => act.MapFrom(src => src.CreatedDate))
-                .ForMember(dest => dest.ModifiedDate, act => act.MapFrom(src => src.ModifiedDate))
-                .ForMember(dest => dest.DeletedDate, act => act.MapFrom(src => src.DeletedDate))
-                .ForMember(dest => dest.Status, act => act.MapFrom(src => src.Status))
-                .ForMember(dest => dest.ID, act => act.MapFrom(src => src.ID))
-                .ReverseMap();
+            //CreateMap<Category, CategoryDTO>()
+            //    .ForMember(dest => dest.CategoryName, act => act.MapFrom(src => src.CategoryName))
+            //    .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description))
+            //    .ForMember(dest => dest.CreatedDate, act => act.MapFrom(src => src.CreatedDate))
+            //    .ForMember(dest => dest.ModifiedDate, act => act.MapFrom(src => src.ModifiedDate))
+            //    .ForMember(dest => dest.DeletedDate, act => act.MapFrom(src => src.DeletedDate))
+            //    .ForMember(dest => dest.Status, act => act.MapFrom(src => src.Status))
+            //    .ForMember(dest => dest.ID, act => act.MapFrom(src => src.ID))
+            //    .ReverseMap();
 
-
+            CreateMap<ProductDTO, Product>().ReverseMap();
+            CreateMap<ProductImageDTO, ProductImage>().ReverseMap();
+            CreateMap<AppUserDTO, AppUser>()//Düzenleme Yapılacak Manager Sınıfında
+                .ForMember(dest => dest.UserName, act => act.MapFrom(scr => scr.UserName))
+                .ForMember(dest => dest.Email, act => act.MapFrom(scr => scr.Email));
+            
 
         }
 

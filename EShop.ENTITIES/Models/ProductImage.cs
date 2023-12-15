@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace EShop.ENTITIES.Models
 {
-    public class Category:BaseEntity
+    public class ProductImage:BaseEntity
     {
-        public string CategoryName { get; set; }
-        public string Description { get; set; }
+        public string ImagePath { get; set; }
+
         //Relation Property
         public virtual ICollection<Product> Products { get; set; }
-
     }
 }
