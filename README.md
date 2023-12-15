@@ -1,3 +1,22 @@
+<h1 align="center">Merhaba 👋, Ben Ahmet Tahsin ÇAM</h1>
+<h3 align="center">Türkiye'den bir backend geliştiriciyim</h3>
+
+- 🔭 Şu anda üzerinde çalıştığım proje [ESHOP](https://github.com/AhmetTahsin/EShop)
+
+- 🌱 Şu anda öğrenmekte olduğum konular **EF, Identity, MVC Core**
+
+- 👨‍💻 Tüm projelerime [https://github.com/AhmetTahsin](https://github.com/AhmetTahsin) adresinden ulaşabilirsiniz.
+
+- 📫 Benimle iletişime geçmek için **ahmet.tahsin.cam@gmail.com**
+
+<h3 align="left">Benimle iletişime geçin:</h3>
+<p align="left">
+<a href="https://linkedin.com/in/ahmet tahsin çam" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ahmet tahsin çam" height="30" width="40" /></a>
+</p>
+
+<h3 align="left">Diller ve Araçlar:</h3>
+<p alig
+
 <h1 align="center">Hi 👋, I'm Ahmet Tahsin ÇAM</h1>
 <h3 align="center">I'm a backend developer from Turkey</h3>
 
