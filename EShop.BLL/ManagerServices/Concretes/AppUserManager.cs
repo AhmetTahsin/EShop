@@ -26,5 +26,14 @@ namespace EShop.BLL.ManagerServices.Concretes
 
             return false;
         }
+        public bool LoginUser(AppUserDTO appUser)
+        {
+            AppUser user = new AppUser()
+            {
+                UserName = appUser.UserName,
+            };
+
+            return false;
+        }
     }
 }

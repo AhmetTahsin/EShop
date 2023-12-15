@@ -16,6 +16,10 @@ namespace EShop.BLL.ServiceInjections
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IAppUserRepository, AppUserRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductImageRepository, ProductImageRepository>();
+
 
 
             return services;

@@ -28,10 +28,20 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); //Giriþ için Area !! eriþim
+
 app.UseAuthorization();
+
+
+
+app.MapControllerRoute(
+     name: "Areas",
+     pattern: "{Area}/{Controller=Home}/{Action=Index}/{id?}"
+
+    );
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Test}/{action=CategoryDeleteTest}/{id?}");
+    pattern: "{controller=Home}/{action=LogIn}/{id?}");
 
 app.Run();
