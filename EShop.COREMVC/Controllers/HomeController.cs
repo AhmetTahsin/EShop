@@ -2,6 +2,7 @@ using EShop.BLL.DTOs.DTOClasesses;
 using EShop.BLL.ManagerServices.Abstracts;
 using EShop.COREMVC.Models;
 using EShop.COREMVC.Models.PageModels.LoginUserModels;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -39,18 +40,18 @@ namespace EShop.COREMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(UserLoginPageVM model)
+        public async Task<IActionResult> LogIn(UserLoginPageVM model) //Todo:Beni Hatýrla Kýsmý ayarlanacak !
         {
             AppUserDTO userDTO = new AppUserDTO()
             {
-                UserName = model.User.UserName,
+                UserName = model.User.UserName.ToLower(),
                 Password = model.User.Password,
             };
 
             string result = await _appUserManager.LoginUser(userDTO); //Domain kullanmamak için string olarak dönen deger ile iþlem yapýyorum
             if (result == "Admin")
             {
-                return RedirectToAction("Index", "Home", new { Area = "Admin" });
+                return RedirectToAction("Index", "Home", new { Area = "Admin" }); //Test Edildi
             }
             else if (result == "Member")
             {
@@ -60,6 +61,17 @@ namespace EShop.COREMVC.Controllers
             {
                 return RedirectToAction("Index", "Seller", new { Area = "Seller" });
             }
+            else if (result == "MailPanel")
+            {
+                TempData["message"] = "E-Posta adresiniz ile mailinizi onayýnýz...";
+                return RedirectToAction("LogIn");
+            }
+            else if (result == "NoFound")
+            {
+                TempData["message"] = "UserName veya Password Hatalý...";
+                return RedirectToAction("LogIn");
+            }
+
 
 
             return View();

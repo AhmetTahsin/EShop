@@ -29,6 +29,7 @@ namespace EShop.DAL.ContextClasses
             CategoryDataSeedExtension.SeedCategories(builder); // Fake Veri
             UserRoleDataSeedExtension.SeedUserAdmin(builder);
             UserRoleDataSeedExtension.SeedUserMember(builder);
+            UserRoleDataSeedExtension.SeedSellerMember(builder);
             ProductDataSeedExtension.SeedProductImage(builder);
             ProductDataSeedExtension.SeedProduct(builder);
         }

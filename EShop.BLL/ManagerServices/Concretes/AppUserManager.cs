@@ -29,12 +29,15 @@ namespace EShop.BLL.ManagerServices.Concretes
 
         public bool AddUser(AppUserDTO appUser) //Testler Yapılacak metotlar yazılacak !!
         {
-
             return false;
         }
         public async Task<string> LoginUser(AppUserDTO appUserDTO)
         {
             AppUser appUser = await _appUserManager.FindByNameAsync(appUserDTO.UserName);
+            if (appUser == null)
+            {
+                return "NoFound";
+            }
             SignInResult result = await _signInManager.PasswordSignInAsync(appUser, appUserDTO.Password,true,true);
 
             if (result.Succeeded) //Todo: Yeni Role Olur ise buraya ekleme yap string donen degerlere göre Controller'a yaz
@@ -48,12 +51,16 @@ namespace EShop.BLL.ManagerServices.Concretes
                 {
                     return "Member";
                 }
+                else if (role.Contains("Seller"))
+                {
+                    return "Seller";
+                }
             }
-            else if (result.IsNotAllowed)
+            else if (result.IsNotAllowed)//Mail onayı lazım
             {
                 return "MailPanel";
             }
-            return "LogIn"; //kullanıcı bulunamadı
+            return "NoFound";
         }
     }
 }

@@ -30,8 +30,8 @@ namespace EShop.DAL.Extensions.ModelBuilderExtensions
             AppUser user = new()
             {
                 Id = 1,
-                UserName = "Admin",
-                Email = "Admin@gmail.com",
+                UserName = "admin",
+                Email = "admin@gmail.com",
                 NormalizedEmail = "ADMIN@GMAIL.COM",
                 NormalizedUserName = "ADMIN",
                 EmailConfirmed = true,
@@ -50,6 +50,7 @@ namespace EShop.DAL.Extensions.ModelBuilderExtensions
 
 
         }
+
         public static void SeedUserMember(ModelBuilder modelBuilder)
         {
 
@@ -76,6 +77,46 @@ namespace EShop.DAL.Extensions.ModelBuilderExtensions
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 PasswordHash = passwordHasher.HashPassword(null, "Member123.")
+            };
+
+            modelBuilder.Entity<AppUser>().HasData(user);
+
+            modelBuilder.Entity<IdentityUserRole<int>>().HasData(new IdentityUserRole<int>
+            {
+                RoleId = appRole.Id,
+                UserId = user.Id
+            });
+            #endregion
+
+
+        }
+
+        public static void SeedSellerMember(ModelBuilder modelBuilder)
+        {
+
+            #region SellerUser
+            IdentityRole<int> appRole = new()
+            {
+                Id = 3,
+                Name = "Seller",
+                NormalizedName = "SELLER",
+                ConcurrencyStamp = Guid.NewGuid().ToString() //bu ifade sisteminizin yeni bir Guid yaratmasını saglar
+            };
+
+            modelBuilder.Entity<IdentityRole<int>>().HasData(appRole);
+
+            PasswordHasher<AppUser> passwordHasher = new PasswordHasher<AppUser>();
+
+            AppUser user = new()
+            {
+                Id = 3,
+                UserName = "seller123",
+                Email = "seller@gmail.com",
+                NormalizedEmail = "SELLER@GMAIL.COM",
+                NormalizedUserName = "SELLER",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                PasswordHash = passwordHasher.HashPassword(null, "Seller123.")
             };
 
             modelBuilder.Entity<AppUser>().HasData(user);
