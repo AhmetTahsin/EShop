@@ -1,5 +1,6 @@
 ﻿using EShop.BLL.DTOs.DTOClasesses;
 using EShop.ENTITIES.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace EShop.BLL.ManagerServices.Abstracts
 {
     public interface IAppUserManager:IManager<AppUserDTO,AppUser>
     {
-        public bool AddUser(AppUserDTO appUser);
+        public Task<string> AddUser(AppUserDTO appUser);
         public Task<string> LoginUser(AppUserDTO appUserDTO);
     }
 }

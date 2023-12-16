@@ -2,6 +2,6 @@
 {
     public class UserLoginPageVM
     {
-        public UserLoginResponseModel User { get; set; }
+        public UserLoginRequestModel User { get; set; }
     }
 }

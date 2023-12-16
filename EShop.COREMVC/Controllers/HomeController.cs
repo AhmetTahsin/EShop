@@ -1,8 +1,12 @@
 using EShop.BLL.DTOs.DTOClasesses;
 using EShop.BLL.ManagerServices.Abstracts;
+using EShop.COMMON.Tools;
 using EShop.COREMVC.Models;
 using EShop.COREMVC.Models.PageModels.LoginUserModels;
+using EShop.COREMVC.Models.PageModels.RegisterUserModels;
+using EShop.ENTITIES.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -49,6 +53,7 @@ namespace EShop.COREMVC.Controllers
             };
 
             string result = await _appUserManager.LoginUser(userDTO); //Domain kullanmamak için string olarak dönen deger ile iþlem yapýyorum
+            #region Rol Kontrol
             if (result == "Admin")
             {
                 return RedirectToAction("Index", "Home", new { Area = "Admin" }); //Test Edildi
@@ -61,20 +66,66 @@ namespace EShop.COREMVC.Controllers
             {
                 return RedirectToAction("Index", "Seller", new { Area = "Seller" });
             }
+            #endregion
+            #region EMail Onay
             else if (result == "MailPanel")
             {
                 TempData["message"] = "E-Posta adresiniz ile mailinizi onayýnýz...";
                 return RedirectToAction("LogIn");
             }
+            #endregion
+            #region Giriþ Baþarýsýz
             else if (result == "NoFound")
             {
                 TempData["message"] = "UserName veya Password Hatalý...";
                 return RedirectToAction("LogIn");
-            }
-
-
+            } 
+            #endregion
 
             return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Register(UserRegisterPageVM model)
+        {
+            AppUserDTO appUserDTO = new AppUserDTO()
+            {
+                UserName=model.RegisterModel.UserName.ToLower(),
+                Password=model.RegisterModel.Password,
+                Email=model.RegisterModel.Email.ToLower(),
+            };
+            var result = await _appUserManager.AddUser(appUserDTO); //Kullanýcý olusturup Member Rolunde user olustur string deger donecek
+            
+            if (result == "Fail") //  Kullanýcý olusamadý ise UserName ve Email harici bir hata da !
+            {
+                TempData["message"] = "Kullanýcý Olusamadý Site Yöneticisi ile iletiþime geçiniz";
+                return RedirectToAction("Register");
+            }
+            else if (result == "UserName") 
+            {
+                TempData["message"] = "Kullanýcý Adý Daha Önce Alýnmýþ";
+                return RedirectToAction("Register");
+            }
+            else if(result == "Email")
+            {
+                TempData["message"] = "Email Adresi Daha Önce Alýnmýþ";
+                return RedirectToAction("Register");
+            }
+            else //Bir hata olmadý ise geriye string tipte bir sayý döndurecek id'yi ! result !
+            {
+                Guid specId = Guid.NewGuid();
+                string subject = "EShop Mail Doðrulama";
+                string body = $"Hesabýnýz olusturulmustur.Üyeliginizi onaylamak icin lütfen http://localhost:5012/Home/ConfirmEmail?specId={specId}&id={result} linkine týklayýnýz"; //olusturduðmuz link ile ConfirmEmail Actionuna gidecek þifreli bir þekilde 
+                MailService.Send(model.RegisterModel.Email, body: body, subject: subject); //Mail Gönder
+
+                TempData["Message"] = "Emailinizi kontrol ediniz";
+                return RedirectToAction("Register");
+            }
+
         }
     }
 }

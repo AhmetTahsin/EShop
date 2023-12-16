@@ -27,10 +27,46 @@ namespace EShop.BLL.ManagerServices.Concretes
             _signInManager = signInManager;
         }
 
-        public bool AddUser(AppUserDTO appUser) //Testler Yapılacak metotlar yazılacak !!
+        public async Task<string> AddUser(AppUserDTO appUserDTO) //Testler Yapılacak metotlar yazılacak !!
         {
-            return false;
+
+            AppUser user = new AppUser()
+            {
+                 UserName = appUserDTO.UserName,
+                 Email = appUserDTO.Email,
+            };
+
+            IdentityResult result = await _appUserManager.CreateAsync(user,appUserDTO.Password);
+
+            if(result.Succeeded)
+            {
+                await _appUserManager.AddToRoleAsync(user, "Member");
+                return user.Id.ToString();
+            }
+            else if(!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    if (error.Description.Contains("Email"))
+                    {
+                        return "Email";
+                    }
+                    else if (error.Description.Contains("UserName"))
+                    {
+                        return "UserName";
+                    }
+                    else
+                    {
+                        return "Fail";
+                    }
+                }
+            }
+            return "Fail";
+
         }
+
+
+
         public async Task<string> LoginUser(AppUserDTO appUserDTO)
         {
             AppUser appUser = await _appUserManager.FindByNameAsync(appUserDTO.UserName);

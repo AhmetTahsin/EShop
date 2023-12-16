@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EShop.BLL\EShop.BLL.csproj" />
+    <ProjectReference Include="..\EShop.COMMON\EShop.COMMON.csproj" />
   </ItemGroup>
 
   <ItemGroup>
