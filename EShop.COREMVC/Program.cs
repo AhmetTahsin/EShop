@@ -13,7 +13,7 @@ builder.Services.MapperServiceInjections(); //Mapper Services
 builder.Services.AddDbContextService();     //Context Services
 builder.Services.AddRepServices();          //Repositories Services
 builder.Services.AddManagerServices();      //Manager Services
-
+builder.Services.AddCookieServices();       //Cookie Services
 
 
 //*************************************
@@ -28,9 +28,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); //Login
+app.UseAuthentication(); 
 
-app.UseAuthorization();
+app.UseAuthorization();    
 
 
 app.MapControllerRoute(

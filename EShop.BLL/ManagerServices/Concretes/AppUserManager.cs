@@ -77,7 +77,7 @@ namespace EShop.BLL.ManagerServices.Concretes
             {
                 return "NoFound";
             }
-            SignInResult result = await _signInManager.PasswordSignInAsync(appUser, appUserDTO.Password,true,true);
+            SignInResult result = await _signInManager.PasswordSignInAsync(appUser, appUserDTO.Password,appUserDTO.RememberMe,true);
 
             if (result.Succeeded) //Todo: Yeni Role Olur ise buraya ekleme yap string donen degerlere göre Controller'a yaz
             {

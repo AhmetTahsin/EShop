@@ -14,7 +14,8 @@ namespace EShop.CONF.Configurations
         public override void Configure(EntityTypeBuilder<ProductImage> builder)
         {
             base.Configure(builder);
-            builder.Property(x => x.ImagePath).HasColumnType("nvarchar");
+            builder.Property(x => x.ImagePath).HasColumnType("nvarchar").IsRequired();
+            builder.Property(x=>x.ProductID).HasColumnType("int").IsRequired();
         }
     }
 }

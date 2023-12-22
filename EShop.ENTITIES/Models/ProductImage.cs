@@ -10,6 +10,7 @@ namespace EShop.ENTITIES.Models
     {
         public string ImagePath { get; set; }
 
+        public int ProductID { get; set; }
         //Relation Property
         public virtual ICollection<Product> Products { get; set; }
     }

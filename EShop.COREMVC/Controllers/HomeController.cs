@@ -53,6 +53,7 @@ namespace EShop.COREMVC.Controllers
             {
                 UserName = model.User.UserName.ToLower(),
                 Password = model.User.Password,
+                RememberMe = model.User.RememberMe,
             };
 
             string result = await _appUserManager.LoginUser(userDTO); //Domain kullanmamak için string olarak dönen deger ile iþlem yapýyorum
