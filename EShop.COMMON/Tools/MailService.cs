@@ -10,32 +10,34 @@ namespace EShop.COMMON.Tools
 {
     public static class MailService
     {
-        public static void Send(string receiver, string password = "ktfcfqfbmwrojhfu", string body = "Test mesajıdır", string subject = "Email Testi", string sender = "charcter741@hotmail.com")
+        public static void Send(string receiver, string password = "dgucnfvibfqlukpj", string body = "Test mesajıdır", string subject = "Email Testi", string sender = "charcter741@gmail.com")
         {
             MailAddress senderEmail = new MailAddress(sender);      //gönderici adresi
 
             MailAddress receiverEmail = new MailAddress(receiver);  //alıcı adresi
 
             #region GmailSmtp
-            //SmtpClient smtp = new SmtpClient()//smtp ayarlamaları
+            SmtpClient smtp = new SmtpClient()//smtp ayarlamaları
+            {
+                Host = "smtp.gmail.com",
+                Port = 587, /*587, //465 */
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential(senderEmail.Address, password),
+                
+            };
+            #endregion Yahoo
+            //SmtpClient smtp = new SmtpClient() k+u
             //{
-            //    Host = "smtp.gmail.com",
-            //    Port = 587, //465 
+            //    Host = "smtp.mail.yahoo.com",
+            //    Port = 465, //587 
             //    EnableSsl = true,
             //    DeliveryMethod = SmtpDeliveryMethod.Network,
             //    UseDefaultCredentials = true,
-            //    Credentials = new NetworkCredential(senderEmail.Address, password)
-            //}; 
-            #endregion
-            SmtpClient smtp = new SmtpClient()//smtp ayarlamaları
-            {
-                Host = "smtp.live.com",
-                Port = 587, //465 
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(senderEmail.Address, password)
-            };
+            //    Credentials = new NetworkCredential(senderEmail.Address, password),
+                
+            //};
 
             using (MailMessage message = new(senderEmail, receiverEmail)
             {
@@ -53,7 +55,7 @@ namespace EShop.COMMON.Tools
                 }
             }
 
-
+            //charcter7411@yahoo.com saxzzvycjzyogswy
 
         }
     }

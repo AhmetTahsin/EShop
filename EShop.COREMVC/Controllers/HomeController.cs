@@ -3,11 +3,14 @@ using EShop.BLL.ManagerServices.Abstracts;
 using EShop.COMMON.Tools;
 using EShop.COREMVC.Models;
 using EShop.COREMVC.Models.PageModels.LoginUserModels;
+using EShop.COREMVC.Models.PageModels.NewPasswordUserModels;
 using EShop.COREMVC.Models.PageModels.RegisterUserModels;
+using EShop.COREMVC.Models.PageModels.ResetUserModels;
 using EShop.ENTITIES.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.Diagnostics;
 
 namespace EShop.COREMVC.Controllers
@@ -46,7 +49,7 @@ namespace EShop.COREMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> LogIn(UserLoginPageVM model) //Todo:Beni Hatýrla Kýsmý ayarlanacak !
         {
-            AppUserDTO userDTO = new AppUserDTO()
+            AppUserLoginDTO userDTO = new AppUserLoginDTO()
             {
                 UserName = model.User.UserName.ToLower(),
                 Password = model.User.Password,
@@ -64,7 +67,7 @@ namespace EShop.COREMVC.Controllers
             }
             else if (result == "Seller")
             {
-                return RedirectToAction("Index", "Seller", new { Area = "Seller" });
+                return RedirectToAction("Index", "Home", new { Area = "Seller" });
             }
             #endregion
             #region EMail Onay
@@ -92,40 +95,102 @@ namespace EShop.COREMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(UserRegisterPageVM model)
         {
-            AppUserDTO appUserDTO = new AppUserDTO()
+            if (ModelState.IsValid) //model gelmiþse
             {
-                UserName=model.RegisterModel.UserName.ToLower(),
-                Password=model.RegisterModel.Password,
-                Email=model.RegisterModel.Email.ToLower(),
-            };
-            var result = await _appUserManager.AddUser(appUserDTO); //Kullanýcý olusturup Member Rolunde user olustur string deger donecek
-            
-            if (result == "Fail") //  Kullanýcý olusamadý ise UserName ve Email harici bir hata da !
-            {
-                TempData["message"] = "Kullanýcý Olusamadý Site Yöneticisi ile iletiþime geçiniz";
-                return RedirectToAction("Register");
-            }
-            else if (result == "UserName") 
-            {
-                TempData["message"] = "Kullanýcý Adý Daha Önce Alýnmýþ";
-                return RedirectToAction("Register");
-            }
-            else if(result == "Email")
-            {
-                TempData["message"] = "Email Adresi Daha Önce Alýnmýþ";
-                return RedirectToAction("Register");
-            }
-            else //Bir hata olmadý ise geriye string tipte bir sayý döndurecek id'yi ! result !
-            {
-                Guid specId = Guid.NewGuid();
-                string subject = "EShop Mail Doðrulama";
-                string body = $"Hesabýnýz olusturulmustur.Üyeliginizi onaylamak icin lütfen http://localhost:5012/Home/ConfirmEmail?specId={specId}&id={result} linkine týklayýnýz"; //olusturduðmuz link ile ConfirmEmail Actionuna gidecek þifreli bir þekilde 
-                MailService.Send(model.RegisterModel.Email, body: body, subject: subject); //Mail Gönder
+                AppUserRegisterDTO appUserDTO = new AppUserRegisterDTO()
+                {
+                    UserName = model.RegisterModel.UserName.ToLower(),
+                    Password = model.RegisterModel.Password,
+                    Email = model.RegisterModel.Email.ToLower(),
+                };
+                var result = await _appUserManager.AddUser(appUserDTO); //Mail ayarlamarý yapýlý deðilse diye string olarak yazdým normalde bool yapmak daha iyi olabilirdi AddUser'i !
 
-                TempData["Message"] = "Emailinizi kontrol ediniz";
-                return RedirectToAction("Register");
+                if (result == "Fail") //  Kullanýcý olusamadý ise UserName ve Email harici bir hata da !
+                {
+                    TempData["message"] = "Kullanýcý Olusamadý Site Yöneticisi ile iletiþime geçiniz";
+                    return RedirectToAction("Register");
+                }
+                else if (result == "UserName")
+                {
+                    TempData["message"] = "Kullanýcý Adý Daha Önce Alýnmýþ veya geçersiz";
+                    return RedirectToAction("Register");
+                }
+                else if (result == "Email")
+                {
+                    TempData["message"] = "Email Adresi Daha Önce Alýnmýþ";
+                    return RedirectToAction("Register");
+                }
+                else //Bir hata olmadý ise geriye string tipte bir sayý döndurecek id'yi ! result !
+                {
+                    Guid specId = Guid.NewGuid();
+                    string subject = "EShop Mail Doðrulama";
+                    string body = $"Hesabýnýz olusturulmustur.Üyeliginizi onaylamak icin lütfen http://localhost:5102/Home/ConfirmEmail?specId={specId}&id={result} linkine týklayýnýz"; //olusturduðmuz link ile ConfirmEmail Actionuna gidecek þifreli bir þekilde 
+                    MailService.Send(model.RegisterModel.Email, body: body, subject: subject); //Mail Gönder
+
+                    //Smtp e-posta ayarlamalarý lazým deðilse diye linki burada gösteriyorum
+                    TempData["message"] = $"Emailinizi kontrol ediniz //// Smtp ayarlarý yapýlý deðil ise Týkla => {body}";
+                    return RedirectToAction("Register");
+                }
+            }
+            return View(model);
+
+
+        }
+
+        public async Task<IActionResult> ConfirmEmail(Guid specId, int id)  
+        {
+            TempData["message"] = await _appUserManager.ConfirmUserEmail(specId, id);
+            return RedirectToAction("Register");
+        }
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(UserResetPasswordPageVM model)
+        {   //AppUser ile ilgili iþlemleri sadece AppUserDTO üzerinden yapýyoruz !
+            AppUserResetPasswordDTO userDTO = new AppUserResetPasswordDTO()
+            {
+                Email=model.UserModel.Email,
+            };
+
+            if (await _appUserManager.SendPasswordResetEmailAsync(userDTO))
+            {
+                TempData["message"] = _appUserManager.ResetPasswordLink(); //mail ayarlarý yapýlý deðilse diye linki görmek için 
+                return View(model);
+            }
+            else
+            {
+                TempData["message"] = "Kullanýcý Bulunamadý";
+                return View(model);
             }
 
         }
+        public IActionResult NewPassword(int userId, string token)
+        {
+            return View(new NewPasswordViewModel { userId = userId, token = token } );
+        }
+        [HttpPost]
+        public async Task<IActionResult> NewPassword(NewPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                NewPasswordViewDTO dTO = new NewPasswordViewDTO()
+                {
+                     UserId = model.userId, Token = model.token,
+                };
+
+                if (await _appUserManager.UserPasswordReset(dTO))
+                {
+                    return RedirectToAction("LogIn");
+                }
+                
+            }
+            TempData["message"] = "Sifre Sýfýrlanamadý";
+                return View(model);
+        }
+
+
     }
 }

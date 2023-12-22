@@ -24,7 +24,7 @@ namespace EShop.BLL.ServiceInjections
                 x.SignIn.RequireConfirmedEmail = true;      // E-Posta onayı için Mail Servisi yazılacak o yüzden açtım
                 x.Password.RequireNonAlphanumeric = false;  //özel karakter kullanma
 
-            }).AddEntityFrameworkStores<MyContext>();
+            }).AddEntityFrameworkStores<MyContext>().AddDefaultTokenProviders();
 
 
             return services;

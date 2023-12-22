@@ -26,13 +26,18 @@
                 <div>
                     <button type="submit" class="btn btn-primary">Giriş Yap</button>
                 </div>
+                <div class="text-danger" asp-validation-summary="ModelOnly">
+                    <!-- All yapar isek hata mesajları asagıya yazar-->
+
+                </div>
 
             </form>
             <p class="text-center mt-4">
                 <p>@TempData["message"] </p>
-                <a href="#">Şifremi Unuttum</a> <br />
+                <a asp-action="ResetPassword">Şifremi Unuttum</a> <br />
                 <a asp-action="Register">Kayıt Ol</a>
             </p>
+
         </div>
     </div>
 </div>

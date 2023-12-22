@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EShop.BLL.DTOs.DTOClasesses
 {
-    public class AppUserDTO:BaseDTO
+    public class NewPasswordViewDTO
     {
-        public string UserName { get; set; }
-        public string? Email { get; set; }  
+        public Guid SpecId { get; set; }
+        public int UserId { get; set; }
+        public string Token { get; set; }
         public string Password { get; set; }
-
     }
 }
