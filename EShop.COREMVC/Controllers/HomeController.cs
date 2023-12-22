@@ -179,6 +179,7 @@ namespace EShop.COREMVC.Controllers
                 NewPasswordViewDTO dTO = new NewPasswordViewDTO()
                 {
                      UserId = model.userId, Token = model.token,
+                     Password= model.Password,
                 };
 
                 if (await _appUserManager.UserPasswordReset(dTO))
