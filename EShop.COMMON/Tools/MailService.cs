@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace EShop.COMMON.Tools
 {
     public static class MailService
-    {
-        public static void Send(string receiver, string password = "dgucnfvibfqlukpj", string body = "Test mesajıdır", string subject = "Email Testi", string sender = "charcter741@gmail.com")
+    {   //Mail servis çalışmayacak sağlayıcıya göre smtp ayarları yapılıp öyle kullanılası lazım testi yapıldı 
+        public static void Send(string receiver, string password = "test123", string body = "Test mesajıdır", string subject = "Email Testi", string sender = "test@gmail.com")
         {
             MailAddress senderEmail = new MailAddress(sender);      //gönderici adresi
 
@@ -28,16 +28,7 @@ namespace EShop.COMMON.Tools
                 
             };
             #endregion Yahoo
-            //SmtpClient smtp = new SmtpClient() k+u
-            //{
-            //    Host = "smtp.mail.yahoo.com",
-            //    Port = 465, //587 
-            //    EnableSsl = true,
-            //    DeliveryMethod = SmtpDeliveryMethod.Network,
-            //    UseDefaultCredentials = true,
-            //    Credentials = new NetworkCredential(senderEmail.Address, password),
-                
-            //};
+
 
             using (MailMessage message = new(senderEmail, receiverEmail)
             {
@@ -55,7 +46,6 @@ namespace EShop.COMMON.Tools
                 }
             }
 
-            //charcter7411@yahoo.com saxzzvycjzyogswy
 
         }
     }

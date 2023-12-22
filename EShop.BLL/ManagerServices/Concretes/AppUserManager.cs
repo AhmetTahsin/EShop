@@ -147,9 +147,10 @@ namespace EShop.BLL.ManagerServices.Concretes
                 return false;
             }
 
+            user.ModifiedDate = DateTime.Now;
             
             IdentityResult resetResult = await _appUserManager.ResetPasswordAsync(user, passwordDTO.Token, passwordDTO.Password);
-
+            
             if(resetResult.Succeeded)
             {
                 return true;
