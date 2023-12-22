@@ -1,4 +1,5 @@
 ﻿using EShop.ENTITIES.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace EShop.CONF.Configurations
         public override void Configure(EntityTypeBuilder<ProductImage> builder)
         {
             base.Configure(builder);
+            builder.Property(x => x.ImagePath).HasColumnType("nvarchar");
         }
     }
 }
