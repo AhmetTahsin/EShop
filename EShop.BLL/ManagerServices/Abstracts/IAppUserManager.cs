@@ -17,5 +17,6 @@ namespace EShop.BLL.ManagerServices.Abstracts
         public Task<bool> SendPasswordResetEmailAsync(AppUserResetPasswordDTO appUserDTO);
         public string ResetPasswordLink();
         public Task<bool> UserPasswordReset(NewPasswordViewDTO passwordDTO);
+        public void SignOutAsyncUser();
     }
 }

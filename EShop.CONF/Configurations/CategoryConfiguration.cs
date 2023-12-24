@@ -16,6 +16,7 @@ namespace EShop.CONF.Configurations
             base.Configure(builder);
             builder.Property(x => x.CategoryName).HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             builder.Property(x=>x.Description).HasColumnType("nvarchar").HasMaxLength(256).IsRequired();
+            builder.Property(x => x.ParentCategoryID).HasColumnType("int");
 
         }
     }

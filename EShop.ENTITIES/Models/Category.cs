@@ -10,6 +10,8 @@ namespace EShop.ENTITIES.Models
     {
         public string CategoryName { get; set; }
         public string Description { get; set; }
+        public int? ParentCategoryID { get; set; } //Kategoriler arası ilişki için 
+
         //Relation Property
         public virtual ICollection<Product> Products { get; set; }
 

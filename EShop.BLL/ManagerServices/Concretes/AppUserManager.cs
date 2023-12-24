@@ -161,5 +161,10 @@ namespace EShop.BLL.ManagerServices.Concretes
             }
             
         }
+
+        public async void SignOutAsyncUser()
+        {
+            var a=_signInManager.SignOutAsync();
+        }
     }
 }

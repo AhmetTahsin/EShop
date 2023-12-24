@@ -43,12 +43,26 @@ namespace EShop.COREMVC.Controllers
 
         public IActionResult LogIn()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin")) //Yerine Area ismini string olarak geri veren bir metod yazýlabilir böylelikle if else uðraþmayýz
+                    return RedirectToAction("Index", "Home", new { Area = "Admin" });
+                else if (User.IsInRole("Member"))
+                {
+                    return RedirectToAction("Index", "Home", new { Area = "Member" });
+                }
+                else if (User.IsInRole("Seller"))
+                {
+                    return RedirectToAction("Index", "Home", new { Area = "Seller" });
+                }
+            }
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(UserLoginPageVM model) //Todo:Beni Hatýrla Kýsmý ayarlanacak !
+        public async Task<IActionResult> LogIn(UserLoginPageVM model)
         {
+
             AppUserLoginDTO userDTO = new AppUserLoginDTO()
             {
                 UserName = model.User.UserName.ToLower(),
@@ -56,11 +70,11 @@ namespace EShop.COREMVC.Controllers
                 RememberMe = model.User.RememberMe,
             };
 
-            string result = await _appUserManager.LoginUser(userDTO); //Domain kullanmamak için string olarak dönen deger ile iþlem yapýyorum
+            string result = await _appUserManager.LoginUser(userDTO); 
             #region Rol Kontrol
             if (result == "Admin")
             {
-                return RedirectToAction("Index", "Home", new { Area = "Admin" }); //Test Edildi
+                return RedirectToAction("Index", "Home", new { Area = "Admin" }); //Todo: Area ismini string olarak veren metod yazýlacak if elseden kurtulmak için get'te de post'ta da Role ve Area isimleri ayný olacak þekilde ayarlýyorum
             }
             else if (result == "Member")
             {
@@ -193,6 +207,13 @@ namespace EShop.COREMVC.Controllers
                 return View(model);
         }
 
+        public IActionResult LogOut() //Todo: logout Hata var Düzeltilecek
+        {
+            _appUserManager.SignOutAsyncUser();
+            return RedirectToAction("Index");
+        }
 
     }
+
+    
 }
