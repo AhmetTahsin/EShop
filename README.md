@@ -1,5 +1,5 @@
-<h1 align="center">Merhaba 👋, Ben Ahmet Tahsin ÇAM</h1>
-<h3 align="center">Türkiye'den bir backend geliştiriciyim</h3>
+<h1 align="center">Merhaba , Ben Ahmet Tahsin ÇAM</h1>
+<h3 align="center">Bir backend geliştiriciyim</h3>
 
 - 🔭 Şu anda üzerinde çalıştığım proje [ESHOP](https://github.com/AhmetTahsin/EShop)
 
@@ -9,7 +9,7 @@
 
 - 📫 Benimle iletişime geçmek için **ahmet.tahsin.cam@gmail.com**
 
-<h1 align="center">Hi 👋, I'm Ahmet Tahsin ÇAM</h1>
+<h1 align="center">Hi , I'm Ahmet Tahsin ÇAM</h1>
 <h3 align="center">I'm a backend developer from Turkey</h3>
 
 - 🔭 I’m currently working on [ESHOP](https://github.com/AhmetTahsin/EShop)
