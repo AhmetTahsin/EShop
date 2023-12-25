@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace EShop.BLL.DTOs.DTOClasesses
 {
-    public abstract class BaseDTO:IDTO
+    public abstract class BaseDTO: IDTO //Todo:CreatedDate 
     {
-        public BaseDTO()
+        public BaseDTO()//Todo:CreatedDate degisiyor bak !
         {
-            CreatedDate = DateTime.UtcNow;
+            ModifiedDate = DateTime.Now;
             Status = DataStatus.Inserted;
         }
         public int ID { get; set; }

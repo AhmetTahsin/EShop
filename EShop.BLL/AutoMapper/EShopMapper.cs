@@ -26,8 +26,7 @@ namespace EShop.BLL.AutoMapper
             //    .ReverseMap();
 
             CreateMap<ProductDTO, Product>().ReverseMap();
-            CreateMap<ProductImageDTO, ProductImage>().ReverseMap();
-            CreateMap<AppUserRegisterDTO, AppUser>()//Düzenleme Yapılacak Manager Sınıfında
+            CreateMap<AppUserRegisterDTO, AppUser>()//Todo:Düzenleme Yapılacak Manager Sınıfında
                 .ForMember(dest => dest.UserName, act => act.MapFrom(scr => scr.UserName))
                 .ForMember(dest => dest.Email, act => act.MapFrom(scr => scr.Email));
             

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EShop.BLL.DTOs.CoreInterfaces
 {
-    public interface IDTO
+    public interface IDTO 
     {
         public int ID { get; set; }
         public DateTime CreatedDate { get; set; }

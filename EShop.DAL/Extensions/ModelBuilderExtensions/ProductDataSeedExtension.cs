@@ -11,15 +11,7 @@ namespace EShop.DAL.Extensions.ModelBuilderExtensions
 {
     public static class ProductDataSeedExtension
     {
-        public static void SeedProductImage(ModelBuilder modelBuilder)
-        {
-            ProductImage productImage = new ProductImage()
-            {
-                ID = 1,
-                ImagePath = $"/Images/ProductImages/Test.png"
-            };
-            modelBuilder.Entity<ProductImage>().HasData(productImage);
-        }
+
 
         public static void SeedProduct(ModelBuilder modelBuilder)
         {
@@ -36,7 +28,7 @@ namespace EShop.DAL.Extensions.ModelBuilderExtensions
                     UnitPrice = Convert.ToDecimal(new Commerce("tr").Price()),
                     UnitsInStock = rnd.Next(0,50),
                     CategoryID = rnd.Next(1,11), //10 tane kategori olusturduk test için rasgele bunlardan biri olsun
-                    ProductImageID = 1 //Test verisi için tek bir resim kullanulacak
+                    ImagePath = "/images/ProductImages/Test.jpg"
                 };
 
                 products.Add(product);

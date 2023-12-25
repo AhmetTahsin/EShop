@@ -40,6 +40,6 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=LogIn}/{id?}");
+    pattern: "{controller=Shopping}/{action=Index}/{id?}");
 
 app.Run();

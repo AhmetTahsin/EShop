@@ -6,12 +6,12 @@ using EShop.COREMVC.Models.PageModels.LoginUserModels;
 using EShop.COREMVC.Models.PageModels.NewPasswordUserModels;
 using EShop.COREMVC.Models.PageModels.RegisterUserModels;
 using EShop.COREMVC.Models.PageModels.ResetUserModels;
-using EShop.ENTITIES.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Diagnostics;
+using X.PagedList;
 
 namespace EShop.COREMVC.Controllers
 {
@@ -19,14 +19,19 @@ namespace EShop.COREMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         readonly IAppUserManager _appUserManager;
-        public HomeController(ILogger<HomeController> logger, IAppUserManager appUserManager)
+        readonly ICategoryManager _categoryManager;
+        readonly IProductManager _productManager;
+        public HomeController(ILogger<HomeController> logger, IAppUserManager appUserManager, ICategoryManager categoryManager, IProductManager productManager)
         {
             _logger = logger;
             _appUserManager = appUserManager;
+            _categoryManager = categoryManager;
+            _productManager = productManager;
         }
 
         public IActionResult Index()
         {
+
             return View();
         }
 

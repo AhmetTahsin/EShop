@@ -11,7 +11,7 @@ namespace EShop.BLL.DTOs.DTOClasesses
         public string ProductName { get; set; }
         public decimal UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
-        public int? ProductImageID { get; set; }
+        public string ImagePath { get; set; }
         public int? CategoryID { get; set; }
     }
 }
