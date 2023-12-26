@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace EShop.BLL.ManagerServices.Concretes
 {
-    public class ProductManager:BaseManager<ProductDTO,Product>,IProductManager
+    public class OrderManager : BaseManager<OrderDTO, Order>, IOrderManager
     {
-        IProductRepository _proRep;
+        IOrderRepository _orRep;
         IMapper _mapper;
-        public ProductManager(IProductRepository proRep,IMapper mapper):base(proRep,mapper)
+
+        protected OrderManager(IOrderRepository iRep, IMapper mapper) : base(iRep, mapper)
         {
-            _proRep = proRep;
+            _orRep = iRep;
             _mapper = mapper;
         }
     }

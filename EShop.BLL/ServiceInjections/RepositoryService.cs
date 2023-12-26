@@ -18,6 +18,9 @@ namespace EShop.BLL.ServiceInjections
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IAppUserRepository, AppUserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+
 
 
 

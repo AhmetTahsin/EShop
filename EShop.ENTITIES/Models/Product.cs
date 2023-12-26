@@ -12,10 +12,13 @@ namespace EShop.ENTITIES.Models
         public decimal UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
         public string ImagePath { get; set; }
+        public decimal KDV { get; set; }
+        public decimal? OTV { get; set; }
 
         public int? CategoryID { get; set; }
 
         //Relation Property
         public virtual Category Category { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

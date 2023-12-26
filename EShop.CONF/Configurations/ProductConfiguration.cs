@@ -17,6 +17,8 @@ namespace EShop.CONF.Configurations
             builder.Property(x=>x.ProductName).HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             builder.Property(x => x.UnitPrice).HasColumnType("money").IsRequired();
             builder.Property(x => x.UnitsInStock).HasColumnType("int").IsRequired();
+            builder.Property(x=>x.KDV).HasColumnType("decimal").IsRequired();
+            builder.Property(x => x.OTV).HasColumnType("decimal");
         }
     }
 }

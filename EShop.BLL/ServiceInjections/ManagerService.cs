@@ -21,7 +21,8 @@ namespace EShop.BLL.ServiceInjections
             services.AddScoped<ICategoryManager, CategoryManager>();
             services.AddScoped<IAppUserManager, AppUserManager>();
             services.AddScoped<IProductManager, ProductManager>();
-
+            services.AddScoped<IOrderManager, OrderManager>();
+            services.AddScoped<IOrderDetailManager, OrderDetailManager>();
 
             services.AddAutoMapper(typeof(ServiceCollectionExtensions));
 
