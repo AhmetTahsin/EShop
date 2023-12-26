@@ -19,7 +19,7 @@ namespace EShop.COREMVC.Controllers
 
 
 
-        public IActionResult Index(int? page, int? categoryID, ShoppingPageVM model) //Todo:Resimler Gözükmüyor Düzelt
+        public IActionResult Index(int? page, int? categoryID) //Todo:Resimler Gözükmüyor Düzelt
         {
 
             ShoppingPageVM spVm = new ShoppingPageVM()

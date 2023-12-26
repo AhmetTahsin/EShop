@@ -28,9 +28,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); 
+app.UseAuthentication();  //Kim?
 
-app.UseAuthorization();    
+app.UseAuthorization();    //Yetkisi var mý
 
 
 app.MapControllerRoute(

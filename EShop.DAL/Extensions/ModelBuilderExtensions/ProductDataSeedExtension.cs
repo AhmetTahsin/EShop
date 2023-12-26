@@ -28,7 +28,7 @@ namespace EShop.DAL.Extensions.ModelBuilderExtensions
                     UnitPrice = Convert.ToDecimal(new Commerce("tr").Price()),
                     UnitsInStock = rnd.Next(0,50),
                     CategoryID = rnd.Next(1,11), //10 tane kategori olusturduk test için rasgele bunlardan biri olsun
-                    ImagePath = "/images/ProductImages/Test.jpg"
+                    ImagePath = "/images/ProductImages/Test.png"
                 };
 
                 products.Add(product);

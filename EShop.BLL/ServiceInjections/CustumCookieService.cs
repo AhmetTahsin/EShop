@@ -14,7 +14,7 @@ namespace EShop.BLL.ServiceInjections
         {
             services.ConfigureApplicationCookie(x =>
             {
-                x.Cookie.HttpOnly = true; //document.cookie yazılınca cookiler gozukmesin !
+                x.Cookie.HttpOnly = true; //document.cookie yazılınca cookiler gozukmesin ! js erişemez
                 x.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;//SSH sertifikası var ise !!
                 x.Cookie.Name = "EShopCookie";  //Cookie adı !
                 x.ExpireTimeSpan = TimeSpan.FromMinutes(5);//Cookie 5 dk sonra geçerliliğini kaybetsin !
