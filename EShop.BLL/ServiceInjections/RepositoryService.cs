@@ -21,10 +21,6 @@ namespace EShop.BLL.ServiceInjections
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 
-
-
-
-
             return services;
         }
     }

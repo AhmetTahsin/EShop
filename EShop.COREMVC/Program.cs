@@ -14,9 +14,10 @@ builder.Services.AddDbContextService();     //Context Services
 builder.Services.AddRepServices();          //Repositories Services
 builder.Services.AddManagerServices();      //Manager Services
 builder.Services.AddCookieServices();       //Cookie Services
-
+builder.Services.AddSessionServices();      //Session Services
 
 //*************************************
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,7 +29,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();  //Kim?
+app.UseSession();           //Session
+
+app.UseAuthentication();    //Kim?
 
 app.UseAuthorization();    //Yetkisi var mý
 

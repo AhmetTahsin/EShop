@@ -16,7 +16,7 @@ namespace EShop.BLL.ServiceInjections
         {
 
             ServiceProvider provider = services.BuildServiceProvider();
-
+            
             IConfiguration? configuration = provider.GetService<IConfiguration>();
 
             services.AddDbContextPool<MyContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("MyConnection")).UseLazyLoadingProxies());
