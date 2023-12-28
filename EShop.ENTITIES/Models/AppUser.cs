@@ -21,5 +21,9 @@ namespace EShop.ENTITIES.Models
         public DateTime? ModifiedDate { get; set; }
         public DateTime? DeletedDate { get; set; }
         public DataStatus Status { get; set; }
+
+        //Relation Property
+        public virtual AppUserProfile Profile { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

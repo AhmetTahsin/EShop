@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EShop.BLL.DTOs.DTOClasesses;
+using EShop.BLL.DTOs.DTOClasesses.EntitysDTO;
 using EShop.ENTITIES.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,14 @@ namespace EShop.BLL.AutoMapper
         public EShopMapper()
         {
             CreateMap<CategoryDTO, Category>().ReverseMap();//CategoryDTO => Category ReverMap Tersi işlemide yapmamızı sağlar
+            CreateMap<ProductDTO, Product>().ReverseMap();
+            CreateMap<OrderDTO, Order>().ReverseMap();
+            CreateMap<OrderDetailDTO, OrderDetail>().ReverseMap();
+            
+
+            CreateMap<AppUserRegisterDTO, AppUser>()//Todo:Düzenleme Yapılacak Manager Sınıfında
+                .ForMember(dest => dest.UserName, act => act.MapFrom(scr => scr.UserName))
+                .ForMember(dest => dest.Email, act => act.MapFrom(scr => scr.Email));
 
             //CreateMap<Category, CategoryDTO>()
             //    .ForMember(dest => dest.CategoryName, act => act.MapFrom(src => src.CategoryName))
@@ -24,15 +33,6 @@ namespace EShop.BLL.AutoMapper
             //    .ForMember(dest => dest.Status, act => act.MapFrom(src => src.Status))
             //    .ForMember(dest => dest.ID, act => act.MapFrom(src => src.ID))
             //    .ReverseMap();
-
-            CreateMap<ProductDTO, Product>().ReverseMap();
-            CreateMap<AppUserRegisterDTO, AppUser>()//Todo:Düzenleme Yapılacak Manager Sınıfında
-                .ForMember(dest => dest.UserName, act => act.MapFrom(scr => scr.UserName))
-                .ForMember(dest => dest.Email, act => act.MapFrom(scr => scr.Email));
-
-
-            CreateMap<OrderDTO, Order>().ReverseMap();
-            CreateMap<OrderDetailDTO, OrderDetail>().ReverseMap();
         }
 
     }

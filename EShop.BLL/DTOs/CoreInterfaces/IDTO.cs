@@ -10,7 +10,6 @@ namespace EShop.BLL.DTOs.CoreInterfaces
     public interface IDTO 
     {
         public int ID { get; set; }
-        public DateTime CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public DateTime? DeletedDate { get; set; }
         public DataStatus Status { get; set; }

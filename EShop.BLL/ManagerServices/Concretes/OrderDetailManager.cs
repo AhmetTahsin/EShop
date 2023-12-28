@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EShop.BLL.DTOs.DTOClasesses;
+using EShop.BLL.DTOs.DTOClasesses.EntitysDTO;
 using EShop.BLL.ManagerServices.Abstracts;
 using EShop.DAL.Repositories.Abstracts;
 using EShop.ENTITIES.Models;
@@ -16,7 +17,7 @@ namespace EShop.BLL.ManagerServices.Concretes
         IOrderDetailRepository _orDetRep;
         IMapper _mapper;
 
-        protected OrderDetailManager(IOrderDetailRepository iRep, IMapper mapper) : base(iRep, mapper)
+        public OrderDetailManager(IOrderDetailRepository iRep, IMapper mapper) : base(iRep, mapper)
         {
             _orDetRep = iRep;
             _mapper = mapper;

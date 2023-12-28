@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EShop.BLL.DTOs.DTOClasesses;
+using EShop.BLL.DTOs.DTOClasesses.EntitysDTO;
 using EShop.BLL.ManagerServices.Abstracts;
 using EShop.DAL.Repositories.Abstracts;
 using EShop.ENTITIES.Models;

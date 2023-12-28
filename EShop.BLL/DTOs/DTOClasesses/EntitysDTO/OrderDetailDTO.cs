@@ -1,10 +1,11 @@
-﻿using System;
+﻿using EShop.BLL.DTOs.DTOClasesses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.BLL.DTOs.DTOClasesses
+namespace EShop.BLL.DTOs.DTOClasesses.EntitysDTO
 {
     public class OrderDetailDTO:BaseDTO
     {

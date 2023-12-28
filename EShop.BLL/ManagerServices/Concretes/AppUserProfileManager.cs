@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EShop.BLL.DTOs.DTOClasesses;
 using EShop.BLL.DTOs.DTOClasesses.EntitysDTO;
 using EShop.BLL.ManagerServices.Abstracts;
 using EShop.DAL.Repositories.Abstracts;
@@ -12,14 +11,13 @@ using System.Threading.Tasks;
 
 namespace EShop.BLL.ManagerServices.Concretes
 {
-    public class OrderManager : BaseManager<OrderDTO, Order>, IOrderManager
+    public class AppUserProfileManager : BaseManager<AppUserProfileDTO, AppUserProfile>, IAppUserProfileManager
     {
-        IOrderRepository _orRep;
+        IAppUserProfileRepository _aUPrep;
         IMapper _mapper;
-
-        public OrderManager(IOrderRepository iRep, IMapper mapper) : base(iRep, mapper)
+        public AppUserProfileManager(IAppUserProfileRepository aUPrep, IMapper mapper) : base(aUPrep, mapper)
         {
-            _orRep = iRep;
+            _aUPrep = aUPrep;
             _mapper = mapper;
         }
     }

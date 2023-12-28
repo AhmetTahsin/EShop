@@ -4,6 +4,7 @@ using EShop.DAL.ContextClasses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EShop.DAL.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20231227215206_Order")]
+    partial class Order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,16 +114,16 @@ namespace EShop.DAL.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "42e5b733-e168-4194-9db0-1e29f8004332",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(7263),
+                            ConcurrencyStamp = "288ec58b-eaa2-4417-b46e-3042df443bb2",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(1380),
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEL5Q58w3BFBG1oCN+Rx1W/tizzow1Z3rUT7A569W9rEyH55qFFGvEdTKaApchECVlw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG+46XhfLKOuPOdm+z98wO24gGqcdDhydZlRkIoGtTwyJDlY54Pt2Ws3AYWzr4uJqA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1a964622-b5fa-4223-b708-f4e6a7ea8ef2",
+                            SecurityStamp = "efc547dd-4b14-4777-87af-b0b6ca4ad86a",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "admin"
@@ -129,16 +132,16 @@ namespace EShop.DAL.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f97928ec-f20a-48dc-9986-3d80294cb4ab",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 966, DateTimeKind.Utc).AddTicks(9441),
+                            ConcurrencyStamp = "f148ba7b-5cac-4420-9b73-684f55cc44c8",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 736, DateTimeKind.Utc).AddTicks(3873),
                             Email = "member@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MEMBER@GMAIL.COM",
                             NormalizedUserName = "MEMBER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG+4B5bUEkhmZPSWUz/X+0ddS8llH2XkLoNZCfFzCDJz7pAob9l6TKWo+DyGQE4hkQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHGbZR9jclUf+vrn2aqy4AO0h4eYO/0llbwDlPk4wnFcnireRWp9eW7naY8SgOyCFQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "97d860b3-1c03-4aa3-8357-ca8cab7ee95e",
+                            SecurityStamp = "e1f33031-af4b-4e22-ab2e-c481d7f20235",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "member123"
@@ -147,56 +150,20 @@ namespace EShop.DAL.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "62b18f19-0623-4ad5-a5e7-5f9501317c38",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 39, DateTimeKind.Utc).AddTicks(2559),
+                            ConcurrencyStamp = "4f0bcd1e-a79b-4032-993b-b4229264d911",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 802, DateTimeKind.Utc).AddTicks(4103),
                             Email = "seller@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "SELLER@GMAIL.COM",
                             NormalizedUserName = "SELLER",
-                            PasswordHash = "AQAAAAIAAYagAAAAECdmQfzHY0UfmKa8ugGxCcTR1gp8HrPysLZm90V1QbsUXtNfngADB0HuA2+aL7JC8g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELht83jsZ9iuc2C5GAVA3eUnirl4+PfCn6eZ2FNHCnYSZY/DWBm0eFr7epKYezQKVQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "edfabdc4-ef10-44d0-a647-218bd64028a8",
+                            SecurityStamp = "67ee0326-db59-4a89-a6fe-82dbdd5c5455",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "seller123"
                         });
-                });
-
-            modelBuilder.Entity("EShop.ENTITIES.Models.AppUserProfile", b =>
-                {
-                    b.Property<int>("ID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("AppUserProfiles");
                 });
 
             modelBuilder.Entity("EShop.ENTITIES.Models.Category", b =>
@@ -240,81 +207,81 @@ namespace EShop.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            CategoryName = "Toys",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6120),
-                            Description = "Dağılımı incidunt esse sunt öyle kulu mi quis quae commodi.",
+                            CategoryName = "Music",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 671, DateTimeKind.Utc).AddTicks(9283),
+                            Description = "Gül ipsam layıkıyla amet göze et velit cezbelendi sokaklarda labore.",
                             Status = 1
                         },
                         new
                         {
                             ID = 2,
-                            CategoryName = "Electronics",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6464),
-                            Description = "Otobüs voluptatem lakin dolore yazın iusto mutlu explicabo sit çarpan.",
+                            CategoryName = "Automotive",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(4),
+                            Description = "Öyle velit incidunt velit qui quis otobüs iusto doğru çıktılar.",
                             Status = 1
                         },
                         new
                         {
                             ID = 3,
-                            CategoryName = "Computers",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6535),
-                            Description = "Gördüm et kapının odit magni ışık anlamsız ekşili ad alias.",
+                            CategoryName = "Shoes",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(73),
+                            Description = "Eve eaque lakin ki laboriosam filmini quasi reprehenderit şafak voluptatem.",
                             Status = 1
                         },
                         new
                         {
                             ID = 4,
-                            CategoryName = "Home",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6628),
-                            Description = "Koyun yaptı quis ipsa voluptatem commodi un doğru mıknatıslı neque.",
+                            CategoryName = "Movies",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(328),
+                            Description = "Sevindi iure velit quia quae umut laudantium exercitationem voluptatem orta.",
                             Status = 1
                         },
                         new
                         {
                             ID = 5,
-                            CategoryName = "Tools",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6690),
-                            Description = "Quae inventore ab nihil türemiş dışarı minima ducimus bundan gördüm.",
+                            CategoryName = "Movies",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(534),
+                            Description = "Karşıdakine aut ullam lakin consequatur çarpan filmini de aspernatur lakin.",
                             Status = 1
                         },
                         new
                         {
                             ID = 6,
-                            CategoryName = "Toys",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6788),
-                            Description = "Yaptı dışarı beğendim hesap çobanın sed ea sed perferendis minima.",
+                            CategoryName = "Movies",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(588),
+                            Description = "Beğendim de nesciunt yazın laboriosam makinesi telefonu camisi alias balıkhaneye.",
                             Status = 1
                         },
                         new
                         {
                             ID = 7,
-                            CategoryName = "Electronics",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6848),
-                            Description = "Sarmal ea quis aut değerli et çıktılar ut karşıdakine adanaya.",
+                            CategoryName = "Baby",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(855),
+                            Description = "Bahar sevindi duyulmamış voluptatem otobüs consectetur fugit ad olduğu ki.",
                             Status = 1
                         },
                         new
                         {
                             ID = 8,
-                            CategoryName = "Garden",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6903),
-                            Description = "Quia filmini in patlıcan consequuntur voluptate gitti çünkü reprehenderit ex.",
+                            CategoryName = "Automotive",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(906),
+                            Description = "Koştum için lambadaki quia autem karşıdakine dignissimos architecto accusantium aut.",
                             Status = 1
                         },
                         new
                         {
                             ID = 9,
-                            CategoryName = "Garden",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6962),
-                            Description = "Voluptatem patlıcan quia laudantium qui göze qui magni eos architecto.",
+                            CategoryName = "Grocery",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(978),
+                            Description = "Dicta dolore laudantium laboriosam nemo cesurca telefonu uzattı exercitationem et.",
                             Status = 1
                         },
                         new
                         {
                             ID = 10,
-                            CategoryName = "Automotive",
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(7017),
-                            Description = "Telefonu aut enim beğendim ama ea öyle ve doğru telefonu.",
+                            CategoryName = "Music",
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(1027),
+                            Description = "Düşünüyor gülüyorum ötekinden dağılımı dolores filmini anlamsız vitae qui oldular.",
                             Status = 1
                         });
                 });
@@ -454,362 +421,362 @@ namespace EShop.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            CategoryID = 2,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(3717),
+                            CategoryID = 5,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3026),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Handcrafted Fresh Shoes",
+                            ProductName = "Awesome Concrete Tuna",
                             Status = 1,
-                            UnitPrice = 253.41m,
-                            UnitsInStock = 22
+                            UnitPrice = 444.59m,
+                            UnitsInStock = 0
                         },
                         new
                         {
                             ID = 2,
-                            CategoryID = 7,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(4393),
+                            CategoryID = 10,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3584),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Sleek Granite Sausages",
+                            ProductName = "Ergonomic Cotton Chicken",
                             Status = 1,
-                            UnitPrice = 671.59m,
-                            UnitsInStock = 29
+                            UnitPrice = 632.31m,
+                            UnitsInStock = 37
                         },
                         new
                         {
                             ID = 3,
-                            CategoryID = 6,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5448),
+                            CategoryID = 2,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3722),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Licensed Steel Shoes",
+                            ProductName = "Unbranded Rubber Table",
                             Status = 1,
-                            UnitPrice = 183.80m,
-                            UnitsInStock = 28
+                            UnitPrice = 868.87m,
+                            UnitsInStock = 5
                         },
                         new
                         {
                             ID = 4,
-                            CategoryID = 5,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5602),
+                            CategoryID = 2,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3815),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Licensed Cotton Salad",
+                            ProductName = "Practical Wooden Chips",
                             Status = 1,
-                            UnitPrice = 63.90m,
-                            UnitsInStock = 46
+                            UnitPrice = 736.20m,
+                            UnitsInStock = 28
                         },
                         new
                         {
                             ID = 5,
-                            CategoryID = 4,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5685),
+                            CategoryID = 9,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3940),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Licensed Plastic Chicken",
+                            ProductName = "Handmade Soft Ball",
                             Status = 1,
-                            UnitPrice = 957.66m,
-                            UnitsInStock = 6
+                            UnitPrice = 63.85m,
+                            UnitsInStock = 21
                         },
                         new
                         {
                             ID = 6,
                             CategoryID = 10,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5809),
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(4041),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Unbranded Cotton Bike",
+                            ProductName = "Small Fresh Salad",
                             Status = 1,
-                            UnitPrice = 813.32m,
-                            UnitsInStock = 40
+                            UnitPrice = 506.41m,
+                            UnitsInStock = 14
                         },
                         new
                         {
                             ID = 7,
-                            CategoryID = 2,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5884),
+                            CategoryID = 8,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(4110),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Licensed Frozen Shoes",
+                            ProductName = "Unbranded Concrete Soap",
                             Status = 1,
-                            UnitPrice = 345.91m,
-                            UnitsInStock = 10
+                            UnitPrice = 165.32m,
+                            UnitsInStock = 19
                         },
                         new
                         {
                             ID = 8,
-                            CategoryID = 5,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6035),
+                            CategoryID = 4,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(4169),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Generic Frozen Fish",
+                            ProductName = "Practical Cotton Car",
                             Status = 1,
-                            UnitPrice = 971.10m,
-                            UnitsInStock = 39
+                            UnitPrice = 740.04m,
+                            UnitsInStock = 2
                         },
                         new
                         {
                             ID = 9,
-                            CategoryID = 7,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6142),
+                            CategoryID = 2,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(7894),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Ergonomic Frozen Shoes",
+                            ProductName = "Generic Metal Mouse",
                             Status = 1,
-                            UnitPrice = 747.84m,
-                            UnitsInStock = 45
+                            UnitPrice = 341.55m,
+                            UnitsInStock = 41
                         },
                         new
                         {
                             ID = 10,
-                            CategoryID = 8,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6203),
+                            CategoryID = 2,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(7967),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Handmade Rubber Keyboard",
+                            ProductName = "Ergonomic Concrete Table",
                             Status = 1,
-                            UnitPrice = 922.76m,
-                            UnitsInStock = 39
+                            UnitPrice = 209.84m,
+                            UnitsInStock = 6
                         },
                         new
                         {
                             ID = 11,
-                            CategoryID = 5,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6329),
+                            CategoryID = 8,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8162),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Gorgeous Granite Mouse",
+                            ProductName = "Gorgeous Fresh Chicken",
                             Status = 1,
-                            UnitPrice = 947.19m,
-                            UnitsInStock = 16
+                            UnitPrice = 588.63m,
+                            UnitsInStock = 21
                         },
                         new
                         {
                             ID = 12,
-                            CategoryID = 7,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6388),
+                            CategoryID = 1,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8223),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Handmade Concrete Chicken",
+                            ProductName = "Unbranded Steel Tuna",
                             Status = 1,
-                            UnitPrice = 447.57m,
-                            UnitsInStock = 12
+                            UnitPrice = 104.24m,
+                            UnitsInStock = 13
                         },
                         new
                         {
                             ID = 13,
-                            CategoryID = 3,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6444),
+                            CategoryID = 5,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8273),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Handmade Cotton Soap",
+                            ProductName = "Ergonomic Cotton Ball",
                             Status = 1,
-                            UnitPrice = 856.43m,
-                            UnitsInStock = 6
+                            UnitPrice = 830.37m,
+                            UnitsInStock = 1
                         },
                         new
                         {
                             ID = 14,
                             CategoryID = 3,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6506),
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8340),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Small Cotton Mouse",
+                            ProductName = "Handcrafted Metal Computer",
                             Status = 1,
-                            UnitPrice = 222.71m,
-                            UnitsInStock = 43
+                            UnitPrice = 833.63m,
+                            UnitsInStock = 42
                         },
                         new
                         {
                             ID = 15,
-                            CategoryID = 1,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6604),
+                            CategoryID = 3,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8391),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Ergonomic Rubber Pants",
+                            ProductName = "Fantastic Granite Tuna",
                             Status = 1,
-                            UnitPrice = 772.36m,
+                            UnitPrice = 169.04m,
                             UnitsInStock = 25
                         },
                         new
                         {
                             ID = 16,
-                            CategoryID = 7,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6872),
+                            CategoryID = 8,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8621),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Handmade Metal Tuna",
+                            ProductName = "Intelligent Soft Chicken",
                             Status = 1,
-                            UnitPrice = 421.06m,
-                            UnitsInStock = 4
+                            UnitPrice = 286.51m,
+                            UnitsInStock = 1
                         },
                         new
                         {
                             ID = 17,
                             CategoryID = 10,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6938),
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8678),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Unbranded Rubber Hat",
+                            ProductName = "Handcrafted Cotton Cheese",
                             Status = 1,
-                            UnitPrice = 459.31m,
-                            UnitsInStock = 36
+                            UnitPrice = 118.74m,
+                            UnitsInStock = 26
                         },
                         new
                         {
                             ID = 18,
-                            CategoryID = 9,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6998),
+                            CategoryID = 7,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8759),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Handcrafted Concrete Ball",
+                            ProductName = "Refined Metal Shoes",
                             Status = 1,
-                            UnitPrice = 735.26m,
-                            UnitsInStock = 44
+                            UnitPrice = 485.55m,
+                            UnitsInStock = 17
                         },
                         new
                         {
                             ID = 19,
-                            CategoryID = 4,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7056),
+                            CategoryID = 1,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8810),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Ergonomic Rubber Sausages",
+                            ProductName = "Practical Fresh Salad",
                             Status = 1,
-                            UnitPrice = 156.62m,
-                            UnitsInStock = 38
+                            UnitPrice = 444.71m,
+                            UnitsInStock = 25
                         },
                         new
                         {
                             ID = 20,
-                            CategoryID = 10,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7112),
+                            CategoryID = 6,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8859),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Handcrafted Fresh Pizza",
+                            ProductName = "Fantastic Fresh Cheese",
                             Status = 1,
-                            UnitPrice = 91.35m,
-                            UnitsInStock = 10
+                            UnitPrice = 500.75m,
+                            UnitsInStock = 22
                         },
                         new
                         {
                             ID = 21,
-                            CategoryID = 2,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7208),
+                            CategoryID = 9,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8907),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Intelligent Metal Computer",
+                            ProductName = "Handmade Frozen Soap",
                             Status = 1,
-                            UnitPrice = 616.67m,
-                            UnitsInStock = 39
+                            UnitPrice = 39.62m,
+                            UnitsInStock = 31
                         },
                         new
                         {
                             ID = 22,
                             CategoryID = 2,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7268),
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8957),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Rustic Metal Bacon",
+                            ProductName = "Handmade Granite Bacon",
                             Status = 1,
-                            UnitPrice = 51.22m,
-                            UnitsInStock = 33
+                            UnitPrice = 341.47m,
+                            UnitsInStock = 24
                         },
                         new
                         {
                             ID = 23,
-                            CategoryID = 8,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7327),
+                            CategoryID = 5,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9005),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Rustic Steel Computer",
+                            ProductName = "Generic Granite Keyboard",
                             Status = 1,
-                            UnitPrice = 664.38m,
-                            UnitsInStock = 7
+                            UnitPrice = 708.01m,
+                            UnitsInStock = 20
                         },
                         new
                         {
                             ID = 24,
-                            CategoryID = 5,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7382),
+                            CategoryID = 1,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9076),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Rustic Plastic Chips",
+                            ProductName = "Gorgeous Steel Gloves",
                             Status = 1,
-                            UnitPrice = 292.77m,
-                            UnitsInStock = 23
+                            UnitPrice = 162.87m,
+                            UnitsInStock = 40
                         },
                         new
                         {
                             ID = 25,
-                            CategoryID = 6,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7438),
+                            CategoryID = 8,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9129),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Small Granite Fish",
+                            ProductName = "Sleek Rubber Shirt",
                             Status = 1,
-                            UnitPrice = 86.80m,
-                            UnitsInStock = 36
+                            UnitPrice = 456.13m,
+                            UnitsInStock = 17
                         },
                         new
                         {
                             ID = 26,
-                            CategoryID = 3,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7492),
+                            CategoryID = 7,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9179),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Gorgeous Wooden Fish",
+                            ProductName = "Licensed Wooden Keyboard",
                             Status = 1,
-                            UnitPrice = 250.62m,
-                            UnitsInStock = 29
+                            UnitPrice = 103.04m,
+                            UnitsInStock = 25
                         },
                         new
                         {
                             ID = 27,
-                            CategoryID = 5,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7551),
+                            CategoryID = 6,
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9233),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Awesome Wooden Sausages",
+                            ProductName = "Gorgeous Granite Tuna",
                             Status = 1,
-                            UnitPrice = 60.75m,
-                            UnitsInStock = 6
+                            UnitPrice = 850.52m,
+                            UnitsInStock = 34
                         },
                         new
                         {
                             ID = 28,
                             CategoryID = 2,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7637),
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9280),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Small Rubber Soap",
+                            ProductName = "Small Concrete Bacon",
                             Status = 1,
-                            UnitPrice = 219.73m,
-                            UnitsInStock = 19
+                            UnitPrice = 78.51m,
+                            UnitsInStock = 12
                         },
                         new
                         {
                             ID = 29,
                             CategoryID = 8,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7696),
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9330),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Intelligent Granite Computer",
+                            ProductName = "Practical Rubber Pizza",
                             Status = 1,
-                            UnitPrice = 104.38m,
-                            UnitsInStock = 5
+                            UnitPrice = 110.14m,
+                            UnitsInStock = 19
                         },
                         new
                         {
                             ID = 30,
                             CategoryID = 4,
-                            CreatedDate = new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7760),
+                            CreatedDate = new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9383),
                             ImagePath = "/images/ProductImages/Test.png",
                             KDV = 10m,
-                            ProductName = "Rustic Rubber Shoes",
+                            ProductName = "Unbranded Concrete Mouse",
                             Status = 1,
-                            UnitPrice = 574.82m,
-                            UnitsInStock = 10
+                            UnitPrice = 780.97m,
+                            UnitsInStock = 6
                         });
                 });
 
@@ -846,21 +813,21 @@ namespace EShop.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "5b8305ae-73cc-4792-9985-8b9ffa84c273",
+                            ConcurrencyStamp = "2dcee76e-ceaf-4bd1-91b1-b9f41fda3d30",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "69f2fd67-ecd7-4aa5-9ee0-d0b74bcd0344",
+                            ConcurrencyStamp = "6077887d-9336-4348-8474-c150fdd8b797",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "7784d274-6a5a-4f99-a6ea-9055cbdeb72e",
+                            ConcurrencyStamp = "bd23d7c1-5e06-426c-81a8-648295cb9e8c",
                             Name = "Seller",
                             NormalizedName = "SELLER"
                         });
@@ -986,21 +953,10 @@ namespace EShop.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("EShop.ENTITIES.Models.AppUserProfile", b =>
-                {
-                    b.HasOne("EShop.ENTITIES.Models.AppUser", "AppUser")
-                        .WithOne("Profile")
-                        .HasForeignKey("EShop.ENTITIES.Models.AppUserProfile", "ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
             modelBuilder.Entity("EShop.ENTITIES.Models.Order", b =>
                 {
                     b.HasOne("EShop.ENTITIES.Models.AppUser", "AppUser")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("AppUserID");
 
                     b.Navigation("AppUser");
@@ -1082,14 +1038,6 @@ namespace EShop.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EShop.ENTITIES.Models.AppUser", b =>
-                {
-                    b.Navigation("Orders");
-
-                    b.Navigation("Profile")
                         .IsRequired();
                 });
 

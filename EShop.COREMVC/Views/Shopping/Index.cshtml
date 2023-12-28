@@ -64,17 +64,19 @@
                         <div class="pro-img-box">
 
                                 <img src="@item.ImagePath" alt="" />
-
-                            <a asp-action="AddToCart" asp-route-id="@item.ID" class="adtocart">
                                 @* idyi buradan alıyor *@
                                 @* Buraya Yazılacak !!! aynı sayfada kalma ??????*@
-
-                                <i class="icon-shopping-cart"></i>
-                            </a>
+                                <a asp-action="AddToCart" asp-route-id="@item.ID" class="adtocart">
+                                    <i class="icon-shopping-cart"></i>
+                                </a>
                         </div>
 
                         <div class="panel-body text-center">
-                            
+                            <h4>
+                                <a href="#" class="pro-title" title="@item.Category.CategoryName"> @* ProductProfile *@
+                                    @item.ProductName
+                                </a>
+                            </h4>
                             <p class="price">$@item.UnitPrice</p>
                         </div>
                     </section>
@@ -86,8 +88,8 @@
     </div>
 </div>
 
-@* @section Sepet {
+@*  @section Sepet {
     <li>
         <a asp-controller="Shopping" asp-action="CartPage"> <i class="icon-shopping-cart"></i> Cart  </a>
-    </li> *@
-}
+    </li> 
+} *@

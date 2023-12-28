@@ -23,10 +23,12 @@ namespace EShop.BLL.ServiceInjections
             services.AddScoped<IProductManager, ProductManager>();
             services.AddScoped<IOrderManager, OrderManager>();
             services.AddScoped<IOrderDetailManager, OrderDetailManager>();
+            services.AddScoped<IAppUserProfileManager, AppUserProfileManager>();
 
-            services.AddAutoMapper(typeof(ServiceCollectionExtensions));
+            //services.AddAutoMapper(typeof(ServiceCollectionExtensions));
 
             return services;
         }
+
     }
 }

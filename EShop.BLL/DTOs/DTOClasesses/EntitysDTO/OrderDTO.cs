@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.BLL.DTOs.DTOClasesses
+namespace EShop.BLL.DTOs.DTOClasesses.EntitysDTO
 {
     public class OrderDTO:BaseDTO
     {

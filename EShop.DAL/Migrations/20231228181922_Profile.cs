@@ -6,683 +6,685 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EShop.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class dbtype : Migration
+    public partial class Profile : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "ProductID",
-                table: "ProductImages",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.CreateTable(
+                name: "AppUserProfiles",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppUserProfiles", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_AppUserProfiles_AspNetUsers_ID",
+                        column: x => x.ID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "ConcurrencyStamp",
-                value: "20e85b6e-9828-46ca-9ae6-dec1d9df47a1");
+                value: "5b8305ae-73cc-4792-9985-8b9ffa84c273");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "ConcurrencyStamp",
-                value: "15ef0ef2-ade7-4cef-a574-efdb58224cb7");
+                value: "69f2fd67-ecd7-4aa5-9ee0-d0b74bcd0344");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "ConcurrencyStamp",
-                value: "b0bffa9f-a0cc-4e8d-ba9c-018f515c2161");
+                value: "7784d274-6a5a-4f99-a6ea-9055cbdeb72e");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "ConcurrencyStamp", "CreatedDate", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "426e132c-d232-40ba-8c7e-1db0821bcc40", new DateTime(2023, 12, 22, 13, 36, 25, 211, DateTimeKind.Utc).AddTicks(406), "AQAAAAIAAYagAAAAEBCHbWhC3fpWjknhu61dLZU+aRDpxY3WZr8qoGiovrwtY3jP3KPFCQeAy9HYBVxPEQ==", "e9a18e8c-fb57-44d0-b0bf-4f420a9a58e0" });
+                values: new object[] { "42e5b733-e168-4194-9db0-1e29f8004332", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(7263), "AQAAAAIAAYagAAAAEL5Q58w3BFBG1oCN+Rx1W/tizzow1Z3rUT7A569W9rEyH55qFFGvEdTKaApchECVlw==", "1a964622-b5fa-4223-b708-f4e6a7ea8ef2" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "ConcurrencyStamp", "CreatedDate", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "9fdbea1e-6fbe-4885-8dd4-65c976544e33", new DateTime(2023, 12, 22, 13, 36, 25, 277, DateTimeKind.Utc).AddTicks(7453), "AQAAAAIAAYagAAAAECMhjyhcBrizmEiv3sH/orqVDxRxzT+edwlNQdnNEHYu6GdHLGEseJUMBZ2pBy3A0w==", "eb88f68e-e5ac-4f8e-9e80-0e247c5c28ea" });
+                values: new object[] { "f97928ec-f20a-48dc-9986-3d80294cb4ab", new DateTime(2023, 12, 28, 18, 19, 20, 966, DateTimeKind.Utc).AddTicks(9441), "AQAAAAIAAYagAAAAEG+4B5bUEkhmZPSWUz/X+0ddS8llH2XkLoNZCfFzCDJz7pAob9l6TKWo+DyGQE4hkQ==", "97d860b3-1c03-4aa3-8357-ca8cab7ee95e" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "ConcurrencyStamp", "CreatedDate", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "306b69f5-c789-4f78-ae17-903a8fbcbb91", new DateTime(2023, 12, 22, 13, 36, 25, 340, DateTimeKind.Utc).AddTicks(8027), "AQAAAAIAAYagAAAAEG/72FNaC6onZHbj68n9kC2uWojdd0kGZTqP/CfeHEPZ3/IjBw2quB6r0hGDztIAmQ==", "0d885e1d-702f-43e0-8fa9-02eb73a159c4" });
+                values: new object[] { "62b18f19-0623-4ad5-a5e7-5f9501317c38", new DateTime(2023, 12, 28, 18, 19, 21, 39, DateTimeKind.Utc).AddTicks(2559), "AQAAAAIAAYagAAAAECdmQfzHY0UfmKa8ugGxCcTR1gp8HrPysLZm90V1QbsUXtNfngADB0HuA2+aL7JC8g==", "edfabdc4-ef10-44d0-a647-218bd64028a8" });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 1,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Jewelery", new DateTime(2023, 12, 22, 13, 36, 25, 210, DateTimeKind.Utc).AddTicks(9309), "Quia incidunt nihil architecto incidunt neque odit beğendim lakin gazete." });
+                values: new object[] { "Toys", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6120), "Dağılımı incidunt esse sunt öyle kulu mi quis quae commodi." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 2,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Kids", new DateTime(2023, 12, 22, 13, 36, 25, 210, DateTimeKind.Utc).AddTicks(9576), "Quia sevindi eaque gazete camisi değirmeni quis uzattı adresini çıktılar." });
+                values: new object[] { "Electronics", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6464), "Otobüs voluptatem lakin dolore yazın iusto mutlu explicabo sit çarpan." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 3,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Home", new DateTime(2023, 12, 22, 13, 36, 25, 210, DateTimeKind.Utc).AddTicks(9642), "Quam ut magnam consequatur de quam ea ve ekşili dışarı." });
+                values: new object[] { "Computers", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6535), "Gördüm et kapının odit magni ışık anlamsız ekşili ad alias." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 4,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Grocery", new DateTime(2023, 12, 22, 13, 36, 25, 210, DateTimeKind.Utc).AddTicks(9756), "Patlıcan filmini ona eius için sarmal düşünüyor çünkü lakin tempora." });
+                values: new object[] { "Home", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6628), "Koyun yaptı quis ipsa voluptatem commodi un doğru mıknatıslı neque." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 5,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Grocery", new DateTime(2023, 12, 22, 13, 36, 25, 210, DateTimeKind.Utc).AddTicks(9817), "Sandalye dolayı ea corporis veniam bilgisayarı voluptatem quia magni ona." });
+                values: new object[] { "Tools", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6690), "Quae inventore ab nihil türemiş dışarı minima ducimus bundan gördüm." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 6,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Toys", new DateTime(2023, 12, 22, 13, 36, 25, 210, DateTimeKind.Utc).AddTicks(9905), "Yapacakmış et quia türemiş un neque aperiam düşünüyor masaya oldular." });
+                values: new object[] { "Toys", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6788), "Yaptı dışarı beğendim hesap çobanın sed ea sed perferendis minima." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 7,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Books", new DateTime(2023, 12, 22, 13, 36, 25, 210, DateTimeKind.Utc).AddTicks(9965), "Ama biber nisi aut nesciunt modi gül bilgiyasayarı voluptatem ipsum." });
+                values: new object[] { "Electronics", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6848), "Sarmal ea quis aut değerli et çıktılar ut karşıdakine adanaya." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 8,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Outdoors", new DateTime(2023, 12, 22, 13, 36, 25, 211, DateTimeKind.Utc).AddTicks(22), "Ut patlıcan sokaklarda voluptatem consequatur çünkü hesap mutlu olduğu anlamsız." });
+                values: new object[] { "Garden", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6903), "Quia filmini in patlıcan consequuntur voluptate gitti çünkü reprehenderit ex." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 9,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Shoes", new DateTime(2023, 12, 22, 13, 36, 25, 211, DateTimeKind.Utc).AddTicks(99), "Çarpan sit gördüm commodi koşuyorlar koştum voluptatum koştum architecto dignissimos." });
+                values: new object[] { "Garden", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(6962), "Voluptatem patlıcan quia laudantium qui göze qui magni eos architecto." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 10,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Grocery", new DateTime(2023, 12, 22, 13, 36, 25, 211, DateTimeKind.Utc).AddTicks(182), "Aliquid ducimus anlamsız reprehenderit çıktılar ullam nostrum et adresini quis." });
-
-            migrationBuilder.UpdateData(
-                table: "ProductImages",
-                keyColumn: "ID",
-                keyValue: 1,
-                columns: new[] { "CreatedDate", "ProductID" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(354), 0 });
+                values: new object[] { "Automotive", new DateTime(2023, 12, 28, 18, 19, 20, 895, DateTimeKind.Utc).AddTicks(7017), "Telefonu aut enim beğendim ama ea öyle ve doğru telefonu." });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 1,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 2, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(420), "Rustic Frozen Computer", 953.20m, 36 });
+                values: new object[] { 2, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(3717), "Handcrafted Fresh Shoes", 253.41m, 22 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 2,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 10, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(812), "Ergonomic Fresh Soap", 997.76m, 48 });
+                values: new object[] { 7, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(4393), "Sleek Granite Sausages", 671.59m, 29 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 3,
-                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(855), "Incredible Soft Shoes", 605.08m, 13 });
+                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { 6, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5448), "Licensed Steel Shoes", 183.80m, 28 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 4,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(892), "Generic Rubber Computer", 857.00m, 12 });
+                values: new object[] { 5, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5602), "Licensed Cotton Salad", 63.90m, 46 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 5,
-                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1001), "Unbranded Frozen Car", 982.66m, 40 });
+                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { 4, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5685), "Licensed Plastic Chicken", 957.66m, 6 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 6,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 8, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1046), "Unbranded Soft Gloves", 799.60m, 28 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5809), "Unbranded Cotton Bike", 813.32m, 40 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 7,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 10, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1083), "Gorgeous Wooden Soap", 996.44m, 14 });
+                values: new object[] { 2, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(5884), "Licensed Frozen Shoes", 345.91m, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 8,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 4, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1118), "Rustic Cotton Pizza", 363.40m, 42 });
+                values: new object[] { 5, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6035), "Generic Frozen Fish", 971.10m, 39 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 9,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 3, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1153), "Generic Wooden Tuna", 882.02m, 12 });
+                values: new object[] { 7, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6142), "Ergonomic Frozen Shoes", 747.84m, 45 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 10,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 3, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1188), "Rustic Concrete Fish", 69.09m, 16 });
+                values: new object[] { 8, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6203), "Handmade Rubber Keyboard", 922.76m, 39 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 11,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 4, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1223), "Small Metal Chair", 616.64m, 2 });
+                values: new object[] { 5, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6329), "Gorgeous Granite Mouse", 947.19m, 16 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 12,
-                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1323), "Sleek Wooden Cheese", 990.69m, 26 });
+                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { 7, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6388), "Handmade Concrete Chicken", 447.57m, 12 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 13,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 9, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1359), "Intelligent Soft Fish", 260.89m, 4 });
+                values: new object[] { 3, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6444), "Handmade Cotton Soap", 856.43m, 6 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 14,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 1, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1392), "Ergonomic Cotton Hat", 917.95m, 40 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6506), "Small Cotton Mouse", 222.71m, 43 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 15,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 1, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1427), "Handcrafted Cotton Chair", 830.81m, 49 });
+                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice" },
+                values: new object[] { 1, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6604), "Ergonomic Rubber Pants", 772.36m });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 16,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 2, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1460), "Intelligent Rubber Tuna", 497.76m, 37 });
+                values: new object[] { 7, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6872), "Handmade Metal Tuna", 421.06m, 4 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 17,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1493), "Handcrafted Steel Chair", 895.16m, 41 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6938), "Unbranded Rubber Hat", 459.31m, 36 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 18,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 7, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1563), "Refined Cotton Mouse", 957.01m, 48 });
+                values: new object[] { 9, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(6998), "Handcrafted Concrete Ball", 735.26m, 44 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 19,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 1, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1601), "Sleek Metal Towels", 245.11m, 6 });
+                values: new object[] { 4, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7056), "Ergonomic Rubber Sausages", 156.62m, 38 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 20,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 2, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1636), "Intelligent Steel Mouse", 343.85m, 13 });
+                values: new object[] { 10, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7112), "Handcrafted Fresh Pizza", 91.35m, 10 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 21,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 6, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1669), "Generic Cotton Salad", 639.62m, 7 });
+                values: new object[] { 2, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7208), "Intelligent Metal Computer", 616.67m, 39 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 22,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 2, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1703), "Rustic Concrete Ball", 888.21m, 9 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7268), "Rustic Metal Bacon", 51.22m, 33 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 23,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 2, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1737), "Tasty Frozen Keyboard", 790.62m, 25 });
+                values: new object[] { 8, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7327), "Rustic Steel Computer", 664.38m, 7 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 24,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1771), "Tasty Steel Pizza", 751.04m, 8 });
+                values: new object[] { 5, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7382), "Rustic Plastic Chips", 292.77m, 23 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 25,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 4, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1824), "Ergonomic Soft Chips", 373.57m, 11 });
+                values: new object[] { 6, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7438), "Small Granite Fish", 86.80m, 36 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 26,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1859), "Rustic Frozen Keyboard", 516.95m, 15 });
+                values: new object[] { 3, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7492), "Gorgeous Wooden Fish", 250.62m, 29 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 27,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1891), "Handmade Frozen Chips", 440.94m, 16 });
+                values: new object[] { 5, new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7551), "Awesome Wooden Sausages", 60.75m, 6 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 28,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 8, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1924), "Rustic Frozen Chicken", 164.48m, 22 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7637), "Small Rubber Soap", 219.73m, 19 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 29,
                 columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1958), "Awesome Frozen Sausages", 511.92m, 34 });
+                values: new object[] { new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7696), "Intelligent Granite Computer", 104.38m, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 30,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 8, new DateTime(2023, 12, 22, 13, 36, 25, 403, DateTimeKind.Utc).AddTicks(1991), "Fantastic Plastic Fish", 549.77m, 11 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 28, 18, 19, 21, 113, DateTimeKind.Utc).AddTicks(7760), "Rustic Rubber Shoes", 574.82m, 10 });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "ProductID",
-                table: "ProductImages");
+            migrationBuilder.DropTable(
+                name: "AppUserProfiles");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "ConcurrencyStamp",
-                value: "feec714b-abaf-47d3-9201-be513ed159bc");
+                value: "2dcee76e-ceaf-4bd1-91b1-b9f41fda3d30");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "ConcurrencyStamp",
-                value: "c379a1f2-bd2d-41c3-b1bf-4408608b1454");
+                value: "6077887d-9336-4348-8474-c150fdd8b797");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "ConcurrencyStamp",
-                value: "beb150f9-75b7-4b66-9f16-2a0b012e8693");
+                value: "bd23d7c1-5e06-426c-81a8-648295cb9e8c");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "ConcurrencyStamp", "CreatedDate", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "522fcee2-fb72-4c97-adfc-8bc64c24fcd2", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(3660), "AQAAAAIAAYagAAAAEIWw+zgbe22gWq4fPkiAqMtu0/iziHwpILjmOfdiusCjc68M8E2Q8zXR1u0qEwgHgA==", "201f0553-b47c-492c-9f71-3aa057658b2e" });
+                values: new object[] { "288ec58b-eaa2-4417-b46e-3042df443bb2", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(1380), "AQAAAAIAAYagAAAAEG+46XhfLKOuPOdm+z98wO24gGqcdDhydZlRkIoGtTwyJDlY54Pt2Ws3AYWzr4uJqA==", "efc547dd-4b14-4777-87af-b0b6ca4ad86a" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "ConcurrencyStamp", "CreatedDate", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "f8c450f8-0b4e-4d93-8134-31fdd66bb710", new DateTime(2023, 12, 22, 13, 33, 27, 817, DateTimeKind.Utc).AddTicks(6024), "AQAAAAIAAYagAAAAEIFB1rn0p6YniwOzxg6LoN1ugh4cmN0+mjgSqVCwdLdF2/j2tDoPIFJ2uccZVUp4Kw==", "d5a4dfe3-6853-4c71-ab72-36bf1f8022fa" });
+                values: new object[] { "f148ba7b-5cac-4420-9b73-684f55cc44c8", new DateTime(2023, 12, 27, 21, 52, 5, 736, DateTimeKind.Utc).AddTicks(3873), "AQAAAAIAAYagAAAAEHGbZR9jclUf+vrn2aqy4AO0h4eYO/0llbwDlPk4wnFcnireRWp9eW7naY8SgOyCFQ==", "e1f33031-af4b-4e22-ab2e-c481d7f20235" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "ConcurrencyStamp", "CreatedDate", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "00cfe7ab-c4d0-4328-95de-4ae14c351dc8", new DateTime(2023, 12, 22, 13, 33, 27, 881, DateTimeKind.Utc).AddTicks(7520), "AQAAAAIAAYagAAAAECUv1Q89drwzos+GuXrtX1FaKaiSmIrsnhI5pH1eSsc6dWukB9bfCzXqfY2Yyd7YNg==", "b493a7b8-6fe7-4dd7-b7b3-07c0889f5749" });
+                values: new object[] { "4f0bcd1e-a79b-4032-993b-b4229264d911", new DateTime(2023, 12, 27, 21, 52, 5, 802, DateTimeKind.Utc).AddTicks(4103), "AQAAAAIAAYagAAAAELht83jsZ9iuc2C5GAVA3eUnirl4+PfCn6eZ2FNHCnYSZY/DWBm0eFr7epKYezQKVQ==", "67ee0326-db59-4a89-a6fe-82dbdd5c5455" });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 1,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Beauty", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(2664), "Ea cezbelendi göze voluptatem koştum sed suscipit voluptatem ad lambadaki." });
+                values: new object[] { "Music", new DateTime(2023, 12, 27, 21, 52, 5, 671, DateTimeKind.Utc).AddTicks(9283), "Gül ipsam layıkıyla amet göze et velit cezbelendi sokaklarda labore." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 2,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Electronics", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(2923), "Çıktılar enim voluptatem fugit makinesi voluptatem ducimus enim ötekinden amet." });
+                values: new object[] { "Automotive", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(4), "Öyle velit incidunt velit qui quis otobüs iusto doğru çıktılar." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 3,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Tools", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(2986), "Quasi magni camisi rem sayfası teldeki un rem quia çakıl." });
+                values: new object[] { "Shoes", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(73), "Eve eaque lakin ki laboriosam filmini quasi reprehenderit şafak voluptatem." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 4,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Automotive", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(3072), "Salladı velit ötekinden voluptatem laudantium aperiam patlıcan dolayı dolores yaptı." });
+                values: new object[] { "Movies", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(328), "Sevindi iure velit quia quae umut laudantium exercitationem voluptatem orta." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 5,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Industrial", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(3166), "Koyun velit cezbelendi filmini değirmeni camisi anlamsız sıradanlıktan koşuyorlar dolorem." });
+                values: new object[] { "Movies", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(534), "Karşıdakine aut ullam lakin consequatur çarpan filmini de aspernatur lakin." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 6,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Health", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(3229), "De aut quis esse quae beatae aspernatur dolore corporis nemo." });
+                values: new object[] { "Movies", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(588), "Beğendim de nesciunt yazın laboriosam makinesi telefonu camisi alias balıkhaneye." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 7,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Toys", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(3286), "İusto domates odit aliquam gülüyorum neque masanın de aliquid anlamsız." });
+                values: new object[] { "Baby", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(855), "Bahar sevindi duyulmamış voluptatem otobüs consectetur fugit ad olduğu ki." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 8,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Games", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(3353), "Çünkü quis laudantium patlıcan et doloremque sunt açılmadan molestiae dergi." });
+                values: new object[] { "Automotive", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(906), "Koştum için lambadaki quia autem karşıdakine dignissimos architecto accusantium aut." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 9,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Music", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(3408), "Exercitationem quae consectetur exercitationem layıkıyla doğru masaya deleniti gidecekmiş olduğu." });
+                values: new object[] { "Grocery", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(978), "Dicta dolore laudantium laboriosam nemo cesurca telefonu uzattı exercitationem et." });
 
             migrationBuilder.UpdateData(
                 table: "Categories",
                 keyColumn: "ID",
                 keyValue: 10,
                 columns: new[] { "CategoryName", "CreatedDate", "Description" },
-                values: new object[] { "Home", new DateTime(2023, 12, 22, 13, 33, 27, 754, DateTimeKind.Utc).AddTicks(3462), "Orta otobüs alias et rem sit sit dolores dignissimos autem." });
-
-            migrationBuilder.UpdateData(
-                table: "ProductImages",
-                keyColumn: "ID",
-                keyValue: 1,
-                column: "CreatedDate",
-                value: new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(4110));
+                values: new object[] { "Music", new DateTime(2023, 12, 27, 21, 52, 5, 672, DateTimeKind.Utc).AddTicks(1027), "Düşünüyor gülüyorum ötekinden dağılımı dolores filmini anlamsız vitae qui oldular." });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 1,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 3, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(4225), "Handcrafted Metal Soap", 362.52m, 31 });
+                values: new object[] { 5, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3026), "Awesome Concrete Tuna", 444.59m, 0 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 2,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 8, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(4651), "Practical Fresh Salad", 801.95m, 34 });
+                values: new object[] { 10, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3584), "Ergonomic Cotton Chicken", 632.31m, 37 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 3,
-                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(5436), "Incredible Wooden Hat", 761.07m, 28 });
+                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { 2, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3722), "Unbranded Rubber Table", 868.87m, 5 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 4,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 4, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(5577), "Refined Plastic Towels", 440.53m, 31 });
+                values: new object[] { 2, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3815), "Practical Wooden Chips", 736.20m, 28 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 5,
-                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(5642), "Intelligent Frozen Bike", 736.06m, 10 });
+                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { 9, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(3940), "Handmade Soft Ball", 63.85m, 21 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 6,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(5746), "Incredible Granite Cheese", 629.55m, 45 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(4041), "Small Fresh Salad", 506.41m, 14 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 7,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 3, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(5802), "Refined Plastic Fish", 629.36m, 47 });
+                values: new object[] { 8, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(4110), "Unbranded Concrete Soap", 165.32m, 19 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 8,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(5852), "Intelligent Metal Gloves", 736.27m, 46 });
+                values: new object[] { 4, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(4169), "Practical Cotton Car", 740.04m, 2 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 9,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 6, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(5923), "Tasty Fresh Shoes", 513.96m, 47 });
+                values: new object[] { 2, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(7894), "Generic Metal Mouse", 341.55m, 41 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 10,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 7, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(5971), "Sleek Concrete Chicken", 924.66m, 38 });
+                values: new object[] { 2, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(7967), "Ergonomic Concrete Table", 209.84m, 6 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 11,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 3, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(6093), "Handcrafted Steel Chips", 805.11m, 22 });
+                values: new object[] { 8, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8162), "Gorgeous Fresh Chicken", 588.63m, 21 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 12,
-                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(6143), "Small Concrete Fish", 949.15m, 4 });
+                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { 1, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8223), "Unbranded Steel Tuna", 104.24m, 13 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 13,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 6, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(9839), "Tasty Cotton Towels", 310.99m, 5 });
+                values: new object[] { 5, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8273), "Ergonomic Cotton Ball", 830.37m, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 14,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 2, new DateTime(2023, 12, 22, 13, 33, 27, 944, DateTimeKind.Utc).AddTicks(9953), "Awesome Cotton Chair", 383.31m, 31 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8340), "Handcrafted Metal Computer", 833.63m, 42 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 15,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 7, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(1), "Ergonomic Concrete Chips", 426.79m, 13 });
+                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice" },
+                values: new object[] { 3, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8391), "Fantastic Granite Tuna", 169.04m });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 16,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 9, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(154), "Fantastic Rubber Chair", 952.58m, 14 });
+                values: new object[] { 8, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8621), "Intelligent Soft Chicken", 286.51m, 1 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 17,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 9, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(208), "Handcrafted Soft Computer", 868.29m, 0 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8678), "Handcrafted Cotton Cheese", 118.74m, 26 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 18,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 9, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(302), "Unbranded Metal Sausages", 858.65m, 29 });
+                values: new object[] { 7, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8759), "Refined Metal Shoes", 485.55m, 17 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 19,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(348), "Refined Concrete Chips", 662.08m, 11 });
+                values: new object[] { 1, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8810), "Practical Fresh Salad", 444.71m, 25 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 20,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 4, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(389), "Generic Plastic Soap", 650.61m, 48 });
+                values: new object[] { 6, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8859), "Fantastic Fresh Cheese", 500.75m, 22 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 21,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(465), "Handmade Granite Soap", 419.46m, 27 });
+                values: new object[] { 9, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8907), "Handmade Frozen Soap", 39.62m, 31 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 22,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 4, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(509), "Licensed Soft Salad", 96.21m, 41 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(8957), "Handmade Granite Bacon", 341.47m, 24 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 23,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 8, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(551), "Rustic Frozen Shirt", 434.50m, 36 });
+                values: new object[] { 5, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9005), "Generic Granite Keyboard", 708.01m, 20 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 24,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 7, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(592), "Licensed Granite Car", 703.45m, 4 });
+                values: new object[] { 1, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9076), "Gorgeous Steel Gloves", 162.87m, 40 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 25,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 2, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(660), "Refined Fresh Bacon", 12.68m, 20 });
+                values: new object[] { 8, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9129), "Sleek Rubber Shirt", 456.13m, 17 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 26,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 7, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(702), "Awesome Frozen Soap", 899.10m, 36 });
+                values: new object[] { 7, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9179), "Licensed Wooden Keyboard", 103.04m, 25 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 27,
                 columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 10, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(743), "Handcrafted Wooden Chicken", 293.53m, 41 });
+                values: new object[] { 6, new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9233), "Gorgeous Granite Tuna", 850.52m, 34 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 28,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 5, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(786), "Handmade Wooden Chicken", 140.03m, 2 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9280), "Small Concrete Bacon", 78.51m, 12 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 29,
                 columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(829), "Handcrafted Fresh Tuna", 592.41m, 26 });
+                values: new object[] { new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9330), "Practical Rubber Pizza", 110.14m, 19 });
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ID",
                 keyValue: 30,
-                columns: new[] { "CategoryID", "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
-                values: new object[] { 9, new DateTime(2023, 12, 22, 13, 33, 27, 945, DateTimeKind.Utc).AddTicks(871), "Small Cotton Car", 55.40m, 9 });
+                columns: new[] { "CreatedDate", "ProductName", "UnitPrice", "UnitsInStock" },
+                values: new object[] { new DateTime(2023, 12, 27, 21, 52, 5, 871, DateTimeKind.Utc).AddTicks(9383), "Unbranded Concrete Mouse", 780.97m, 6 });
         }
     }
 }

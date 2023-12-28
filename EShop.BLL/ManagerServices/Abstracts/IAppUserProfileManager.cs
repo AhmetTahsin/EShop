@@ -1,5 +1,4 @@
-﻿using EShop.BLL.DTOs.DTOClasesses;
-using EShop.BLL.DTOs.DTOClasesses.EntitysDTO;
+﻿using EShop.BLL.DTOs.DTOClasesses.EntitysDTO;
 using EShop.ENTITIES.Models;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace EShop.BLL.ManagerServices.Abstracts
 {
-    public interface IProductManager:IManager<ProductDTO,Product>
+    public interface IAppUserProfileManager:IManager<AppUserProfileDTO,AppUserProfile>
     {
-
     }
 }

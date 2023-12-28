@@ -14,7 +14,7 @@ builder.Services.AddDbContextService();     //Context Services
 builder.Services.AddRepServices();          //Repositories Services
 builder.Services.AddManagerServices();      //Manager Services
 builder.Services.AddCookieServices();       //Cookie Services
-builder.Services.AddSessionServices();      //Session Services
+//builder.Services.AddSessionServices();      //Session Services
 
 //*************************************
 
@@ -29,7 +29,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession();           //Session
+//app.UseSession();           //Session
 
 app.UseAuthentication();    //Kim?
 

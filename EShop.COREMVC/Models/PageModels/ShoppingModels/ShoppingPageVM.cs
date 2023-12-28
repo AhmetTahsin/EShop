@@ -1,4 +1,5 @@
 ﻿using EShop.BLL.DTOs.DTOClasesses;
+using EShop.BLL.DTOs.DTOClasesses.EntitysDTO;
 using EShop.ENTITIES.Models;
 using X.PagedList;
 
