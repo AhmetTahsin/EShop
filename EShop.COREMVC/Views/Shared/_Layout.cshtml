@@ -41,32 +41,36 @@
             <!--logo end-->
 
             <div class="top-nav ">
-                <!--user info start-->
+                <!--search & user info start-->
                 <ul class="nav pull-right top-menu">
-                    @{
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                    <img alt="" src="/OuterTools/img/avatar1_small.jpg">
-                                    <span class="username">Jhon Doue</span>
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu extended logout">
+                    <li>
+                        <input type="text" class="form-control search" placeholder="Search">
+                    </li>
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
 
-                                    @RenderSection("Sepet", false)
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="/Images/UserImage/avatar.png" style="max-width:20px; max-height:20px;"> @* Profile Image *@
+                            <span class="username">Profil</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            @RenderSection("Sepet", false)
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-controller="Home" asp-action="LogOut"><i class="icon-key"></i> Çıkış Yap</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Home" asp-action="LogIn"><i class="icon-key"></i> Giriş Yap</a></li>
+                            }
 
-                                    <li><a href="/Home/LogOut"><i class="icon-key"></i> Çıkış Yap</a></li>
-                                </ul>
-                            </li>
-                        }
-                        else
-                        {
-                            <li><a asp-action="LogIn"><i class="icon-key"></i> Giriş Yap</a></li>
-                        }
-                    }
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
                 </ul>
-                <!--user info end-->
+                <!--search & user info end-->
             </div>
         </header>
         <!--header end-->

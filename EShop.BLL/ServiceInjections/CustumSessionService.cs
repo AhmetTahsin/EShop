@@ -22,5 +22,7 @@ namespace EShop.BLL.ServiceInjections
 
             return services;
         }
+
+
     }
 }

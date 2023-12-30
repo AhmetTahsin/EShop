@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient();           //IHttpClientFactory için 
 builder.Services.AddControllersWithViews();
 //**************************************
 builder.Services.AddIdentityServices();     //Identity Services
@@ -14,7 +15,7 @@ builder.Services.AddDbContextService();     //Context Services
 builder.Services.AddRepServices();          //Repositories Services
 builder.Services.AddManagerServices();      //Manager Services
 builder.Services.AddCookieServices();       //Cookie Services
-//builder.Services.AddSessionServices();      //Session Services
+builder.Services.AddSessionServices();      //Session Services
 
 //*************************************
 
@@ -29,7 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-//app.UseSession();           //Session
+app.UseSession();           //Session
 
 app.UseAuthentication();    //Kim?
 

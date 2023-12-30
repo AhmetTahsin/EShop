@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EShop.BLL.ServiceInjections
 {
-    public static class InnerServiceInjection
+    public static class CustumMapperService
     {
         public static void MapperServiceInjections(this IServiceCollection services)
         {

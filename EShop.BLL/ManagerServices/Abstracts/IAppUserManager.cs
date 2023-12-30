@@ -18,5 +18,6 @@ namespace EShop.BLL.ManagerServices.Abstracts
         public string ResetPasswordLink();
         public Task<bool> UserPasswordReset(NewPasswordViewDTO passwordDTO);
         public void SignOutAsyncUser();
+        
     }
 }
